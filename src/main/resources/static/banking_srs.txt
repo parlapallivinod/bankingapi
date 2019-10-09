@@ -10,15 +10,15 @@ Below two roles are present in this system.
 ROLE_BANKER
 -----------
 	Users with this role can 
-		# create new banks
-    	# remove old banks if no customer is using them
+        # create new banks
+        # remove old banks if no customer is using them
 
 ROLE_CUSTOMER
 -------------
 	Users with this role can
-		# create new accounts
-		# can perform transactions of type deposit, withdraw and transfer on their accounts.
-		# close old accounts
+        # create new accounts
+        # can perform transactions of type deposit, withdraw and transfer on their accounts.
+        # close old accounts
 
 Tables
 ------
@@ -59,7 +59,7 @@ transaction
   amount
   from
   to
-  time
+  created_time
   status
   message
 
@@ -207,7 +207,7 @@ Bank Operations
 Account Operations
 ------------------
 
-	An account belongs to a bank. A customer can create only one account from a particuar bank. Account supports withdraw, deposit, transfer operations.
+	An account belongs to a bank. A customer can create only one account from a particular bank. Account supports withdraw, deposit, transfer operations.
 	 
 	 	POST https://localhost:8080/banking/api/v1/accounts
 	 		-- name

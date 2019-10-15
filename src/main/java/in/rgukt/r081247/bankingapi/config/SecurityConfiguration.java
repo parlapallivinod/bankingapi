@@ -3,7 +3,7 @@
  * created on 2019/09/09
  *
  */
-package in.rgukt.r081247.banking_api.config;
+package in.rgukt.r081247.bankingapi.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,7 +13,6 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -46,12 +45,14 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     	 httpSecurity.csrf().disable();
     	 */
         httpSecurity.authorizeRequests()
-            //.antMatchers("/api/**")
-            //.authenticated()
-            .antMatchers("/**")
-            .permitAll()
-            .and()
-            .httpBasic();
+                .antMatchers("/v1").permitAll()
+                .antMatchers("/v1/bankers/registration").permitAll()
+                .antMatchers("/v1/customers/registration").permitAll()
+                .antMatchers("/v1/customers/**").hasRole("CUSTOMER")
+                .antMatchers("/v1/bankers/**").hasRole("BANKER")
+                .antMatchers("/**").permitAll()
+                .and()
+                .httpBasic();
     	/*
         httpSecurity.authorizeRequests()
                 .antMatchers("/api/**")
@@ -61,7 +62,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .and()
                 .httpBasic();
     	 */
-        httpSecurity.csrf().disable();;
+        httpSecurity.csrf().disable();
 
     }
 

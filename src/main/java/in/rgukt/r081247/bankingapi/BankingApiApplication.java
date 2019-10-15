@@ -4,7 +4,7 @@
  *
  */
 
-package in.rgukt.r081247.banking_api;
+package in.rgukt.r081247.bankingapi;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

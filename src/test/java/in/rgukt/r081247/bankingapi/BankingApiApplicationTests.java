@@ -1,4 +1,4 @@
-package in.rgukt.r081247.banking_api;
+package in.rgukt.r081247.bankingapi;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

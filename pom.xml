@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>in.rgukt.r081247</groupId>
-	<artifactId>banking_api</artifactId>
+	<artifactId>bankingapi</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>banking_api</name>
+	<name>bankingapi</name>
 	<description>This application is used to simulate banking financial systems present in our society.</description>
 
 	<properties>

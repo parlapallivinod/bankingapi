@@ -52,7 +52,7 @@ account
 	balance
 	created_time
 	created_by
-
+username
 transaction
   id
   type
@@ -63,10 +63,15 @@ transaction
   status
   message
 
+DROP TABLE transaction;
+DROP TABLE account;
+DROP TABLE bank;
+DROP TABLE user_role;
+DROP TABLE user;
+DROP TABLE role;
+
 CREATE TABLE role
 (
-	rolename VARCHAR(128),
-
 	CONSTRAINT pk_role PRIMARY KEY(rolename)
 );
 
@@ -78,6 +83,7 @@ CREATE TABLE user
 	username VARCHAR(128),
 	password VARCHAR(128) NOT NULL,
 	created_time TIMESTAMP NOT NULL,
+	last_updated_time TIMESTAMP,
 
 	CONSTRAINT pk_user PRIMARY KEY(username)
 );

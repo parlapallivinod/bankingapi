@@ -30,6 +30,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
+    	System.out.println("add test");
         httpSecurity
             .sessionManagement()
             .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
@@ -50,8 +51,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/v1/customers/registration").permitAll()
                 .antMatchers("/v1/customers/**").hasRole("CUSTOMER")
                 .antMatchers("/v1/bankers/**").hasRole("BANKER")
-                .antMatchers("/**").permitAll()
-                .and()
                 .httpBasic();
     	/*
         httpSecurity.authorizeRequests()

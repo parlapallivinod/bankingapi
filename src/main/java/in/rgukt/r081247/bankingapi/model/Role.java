@@ -1,16 +1,23 @@
+/**
+ * @author Vinod Parlapalli
+ * Created on 2019/10/22
+ * This class is used to represent the roles a user is assigned in the system.
+ */
+
 package in.rgukt.r081247.bankingapi.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name = "role")
-public class Role {
+public class Role implements Comparable<Role>{
 
     @Id
     @NotEmpty(message = "rolename must not be empty")
@@ -18,11 +25,16 @@ public class Role {
     @Column(name = "rolename", length = 128, nullable = false)
     private String rolename;
 
+    @JsonIgnore
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "roles")
+    private Set<User> users = new HashSet<>();
+
     public Role() {
     }
 
-    public Role(String rolename) {
+    public Role(String rolename, Set<User> users) {
         this.rolename = rolename;
+        this.users = users;
     }
 
     public String getRolename() {
@@ -31,6 +43,14 @@ public class Role {
 
     public void setRolename(String rolename) {
         this.rolename = rolename;
+    }
+
+    public Set<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(Set<User> users) {
+        this.users = users;
     }
 
     @Override
@@ -51,5 +71,10 @@ public class Role {
         return "Role{" +
                 "rolename='" + rolename + '\'' +
                 '}';
+    }
+
+    @Override
+    public int compareTo(Role role) {
+        return this.getRolename().compareTo(role.getRolename());
     }
 }

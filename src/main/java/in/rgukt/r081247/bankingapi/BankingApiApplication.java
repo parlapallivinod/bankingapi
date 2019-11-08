@@ -1,7 +1,7 @@
 /**
  * @author Vinod Parlapalli
  * created on 2019/09/08
- *
+ * This class is the starting point for this application.
  */
 
 package in.rgukt.r081247.bankingapi;

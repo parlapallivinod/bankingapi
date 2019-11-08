@@ -1,8 +1,9 @@
 /**
  * @author Vinod Parlapalli
  * created on 2019/09/09
- *
+ * This class contains security configuration for rest web services.
  */
+
 package in.rgukt.r081247.bankingapi.config;
 
 import org.springframework.context.annotation.Bean;

@@ -1,36 +1,62 @@
+/**
+ * @author Vinod Parlapalli
+ * Created on 2019/10/22
+ * This class is used to represent the Users(Bankers, Customers) present
+ * in this system.
+ */
+
 package in.rgukt.r081247.bankingapi.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name = "user")
-public class User {
+public class User implements Comparable<User>{
 
     @Id
-    @NotEmpty(message = "username must not be empty")
-    @Size(max = 128)
+    @NotEmpty(message = "username must not be empty.")
+    @Size(min = 5, max = 16, message = "username length must be between 5 and 16.")
     @Column(name = "username", length = 128, nullable = false)
     private String username;
 
-    @NotEmpty(message = "password must not be empty")
-    @Size(max = 128)
+    @NotEmpty(message = "password must not be empty.")
+    @Size(min = 5, max = 16, message = "password length must be between 5 and 16.")
     @Column(name = "password", length = 128, nullable = false)
     private String password;
 
-    @NotNull(message = "createdTime must not be empty")
+    //@NotNull(message = "createdTime must not be empty")
     @Column(name = "created_time", nullable = false)
     private LocalDateTime createdTime;
 
     @Column(name = "last_updated_time", nullable = true)
     private LocalDateTime lastUpdatedTime;
+
+    @JsonIgnore
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(name = "user_role",
+            joinColumns = @JoinColumn(name = "username"),
+            inverseJoinColumns = @JoinColumn(name = "rolename"))
+    private Set<Role> roles = new HashSet<>();
+
+    public User() {
+    }
+
+    public User(String username, String password, LocalDateTime createdTime, LocalDateTime lastUpdatedTime, Set<Role> roles) {
+        this.username = username;
+        this.password = password;
+        this.createdTime = createdTime;
+        this.lastUpdatedTime = lastUpdatedTime;
+        this.roles = roles;
+    }
 
     public String getUsername() {
         return username;
@@ -64,6 +90,14 @@ public class User {
         this.lastUpdatedTime = lastUpdatedTime;
     }
 
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -77,6 +111,7 @@ public class User {
         return Objects.hash(getUsername());
     }
 
+    /*
     @Override
     public String toString() {
         return "User{" +
@@ -85,5 +120,22 @@ public class User {
                 ", createdTime=" + createdTime +
                 ", lastUpdatedTime=" + lastUpdatedTime +
                 '}';
+    }
+    */
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", createdTime=" + createdTime +
+                ", lastUpdatedTime=" + lastUpdatedTime +
+                ", roles=" + roles +
+                '}';
+    }
+
+    @Override
+    public int compareTo(User user) {
+        return this.getUsername().compareTo(user.getUsername());
     }
 }

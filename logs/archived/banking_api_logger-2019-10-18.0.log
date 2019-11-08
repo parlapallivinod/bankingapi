@@ -1,0 +1,3 @@
+2019-10-18 08:45:26,728 INFO org.springframework.boot.StartupInfoLogger [main] Starting BankingApiApplication on vinod with PID 4680 (/home/vinod/Desktop/desk/projects/bankingapi/target/classes started by vinod in /home/vinod/Desktop/desk/projects/bankingapi)
+2019-10-18 08:45:26,734 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to default profiles: default
+2019-10-18 08:45:39,262 INFO org.springframework.boot.StartupInfoLogger [main] Started BankingApiApplication in 15.255 seconds (JVM running for 33.558)

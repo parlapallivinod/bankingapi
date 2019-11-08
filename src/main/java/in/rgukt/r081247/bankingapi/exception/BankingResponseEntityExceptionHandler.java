@@ -33,6 +33,7 @@ public class BankingResponseEntityExceptionHandler extends ResponseEntityExcepti
         List<String> details = new ArrayList<>();
         details.add(ex.getLocalizedMessage());
         ErrorResponse error = new ErrorResponse("Banking API Error", details);
+        LOGGER.error(error.toString());
         return new ResponseEntity<>(error, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
@@ -41,7 +42,7 @@ public class BankingResponseEntityExceptionHandler extends ResponseEntityExcepti
         List<String> details = new ArrayList<>();
         details.add(ex.getLocalizedMessage());
         ErrorResponse error = new ErrorResponse("User Registration Error", details);
-        LOGGER.error("A banker with same username already present. Kindly try with a different username.");
+        LOGGER.error(error.toString());
         return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
     }
 
@@ -55,6 +56,7 @@ public class BankingResponseEntityExceptionHandler extends ResponseEntityExcepti
             details.add(error.getDefaultMessage());
         }
         ErrorResponse error = new ErrorResponse("Request Parameters Validation Error", details);
+        LOGGER.error(error.toString());
         return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
     }
 }

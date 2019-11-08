@@ -40,4 +40,12 @@ public class ErrorResponse {
     public void setDetails(List<String> details) {
         this.details = details;
     }
+
+    @Override
+    public String toString() {
+        return "ErrorResponse{" +
+                "message='" + message + '\'' +
+                ", details=" + details +
+                '}';
+    }
 }

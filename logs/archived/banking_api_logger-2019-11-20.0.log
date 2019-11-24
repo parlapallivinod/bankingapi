@@ -1,0 +1,81 @@
+2019-11-20 08:29:33,926 INFO org.springframework.boot.StartupInfoLogger [main] Starting BankingApiApplication on vinod with PID 5178 (/home/vinod/Desktop/desk/projects/bankingapi/target/classes started by vinod in /home/vinod/Desktop/desk/projects/bankingapi)
+2019-11-20 08:29:33,944 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to default profiles: default
+2019-11-20 08:29:47,206 INFO org.springframework.boot.StartupInfoLogger [main] Started BankingApiApplication in 14.898 seconds (JVM running for 32.036)
+2019-11-20 08:30:43,608 INFO in.rgukt.r081247.bankingapi.controller.HomeController [http-nio-8081-exec-1] In HomeController.home()
+2019-11-20 08:32:18,824 INFO in.rgukt.r081247.bankingapi.controller.HomeController [http-nio-8081-exec-8] In HomeController.home()
+2019-11-20 08:37:44,423 INFO org.springframework.boot.StartupInfoLogger [main] Starting BankingApiApplication on vinod with PID 5444 (/home/vinod/Desktop/desk/projects/bankingapi/target/classes started by vinod in /home/vinod/Desktop/desk/projects/bankingapi)
+2019-11-20 08:37:44,428 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to default profiles: default
+2019-11-20 08:37:52,755 INFO org.springframework.boot.StartupInfoLogger [main] Started BankingApiApplication in 9.524 seconds (JVM running for 17.464)
+2019-11-20 08:41:34,364 INFO org.springframework.boot.StartupInfoLogger [main] Starting BankingApiApplication on vinod with PID 5578 (/home/vinod/Desktop/desk/projects/bankingapi/target/classes started by vinod in /home/vinod/Desktop/desk/projects/bankingapi)
+2019-11-20 08:41:34,372 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to default profiles: default
+2019-11-20 08:41:43,282 INFO org.springframework.boot.StartupInfoLogger [main] Started BankingApiApplication in 9.853 seconds (JVM running for 18.296)
+2019-11-20 08:44:17,557 INFO org.springframework.boot.StartupInfoLogger [main] Starting BankingApiApplication on vinod with PID 5692 (/home/vinod/Desktop/desk/projects/bankingapi/target/classes started by vinod in /home/vinod/Desktop/desk/projects/bankingapi)
+2019-11-20 08:44:17,559 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to default profiles: default
+2019-11-20 08:44:30,763 INFO org.springframework.boot.StartupInfoLogger [main] Started BankingApiApplication in 14.36 seconds (JVM running for 24.315)
+2019-11-20 08:44:44,133 INFO org.springframework.boot.StartupInfoLogger [main] Starting BankingApiApplication on vinod with PID 5753 (/home/vinod/Desktop/desk/projects/bankingapi/target/classes started by vinod in /home/vinod/Desktop/desk/projects/bankingapi)
+2019-11-20 08:44:44,138 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to default profiles: default
+2019-11-20 08:44:55,168 INFO org.springframework.boot.StartupInfoLogger [main] Started BankingApiApplication in 12.137 seconds (JVM running for 21.149)
+2019-11-20 08:45:22,148 INFO in.rgukt.r081247.bankingapi.controller.HomeController [http-nio-8081-exec-2] In HomeController.home()
+2019-11-20 08:45:34,457 INFO in.rgukt.r081247.bankingapi.controller.HomeController [http-nio-8081-exec-3] In HomeController.home()
+2019-11-20 08:50:32,128 INFO org.springframework.boot.StartupInfoLogger [main] Starting BankingApiApplication on vinod with PID 6005 (/home/vinod/Desktop/desk/projects/bankingapi/target/classes started by vinod in /home/vinod/Desktop/desk/projects/bankingapi)
+2019-11-20 08:50:32,130 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to default profiles: default
+2019-11-20 08:50:41,511 INFO org.springframework.boot.StartupInfoLogger [main] Started BankingApiApplication in 10.323 seconds (JVM running for 18.704)
+2019-11-20 09:30:43,437 INFO org.springframework.boot.StartupInfoLogger [main] Starting BankingApiApplication on vinod with PID 7429 (/home/vinod/Desktop/desk/projects/bankingapi/target/classes started by vinod in /home/vinod/Desktop/desk/projects/bankingapi)
+2019-11-20 09:30:43,439 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to default profiles: default
+2019-11-20 09:30:59,930 INFO org.springframework.boot.StartupInfoLogger [main] Starting BankingApiApplication on vinod with PID 7474 (/home/vinod/Desktop/desk/projects/bankingapi/target/classes started by vinod in /home/vinod/Desktop/desk/projects/bankingapi)
+2019-11-20 09:30:59,931 DEBUG org.springframework.boot.StartupInfoLogger [main] Running with Spring Boot v2.1.9.RELEASE, Spring v5.1.10.RELEASE
+2019-11-20 09:30:59,932 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to default profiles: default
+2019-11-20 09:31:09,022 INFO org.springframework.boot.StartupInfoLogger [main] Started BankingApiApplication in 10.23 seconds (JVM running for 15.999)
+2019-11-20 09:36:12,880 INFO org.springframework.boot.StartupInfoLogger [main] Starting BankingApiApplication on vinod with PID 7598 (/home/vinod/Desktop/desk/projects/bankingapi/target/classes started by vinod in /home/vinod/Desktop/desk/projects/bankingapi)
+2019-11-20 09:36:12,881 DEBUG org.springframework.boot.StartupInfoLogger [main] Running with Spring Boot v2.1.9.RELEASE, Spring v5.1.10.RELEASE
+2019-11-20 09:36:12,882 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to default profiles: default
+2019-11-20 09:36:23,413 INFO org.springframework.boot.StartupInfoLogger [main] Started BankingApiApplication in 11.499 seconds (JVM running for 19.819)
+2019-11-20 09:36:32,310 INFO in.rgukt.r081247.bankingapi.service.UserService [http-nio-8081-exec-2] User: User{username='sachin', password='sachinpass', createdTime=2019-11-20T09:36:32.286530, lastUpdatedTime=null, roles=[Role{rolename='ROLE_BANKER'}]}
+2019-11-20 09:36:32,537 INFO in.rgukt.r081247.bankingapi.service.UserService [http-nio-8081-exec-2] User has been registered
+2019-11-20 09:37:14,222 INFO in.rgukt.r081247.bankingapi.service.BankingUserDetailsService [http-nio-8081-exec-4] usename: 'sachin'
+2019-11-20 09:37:14,243 INFO in.rgukt.r081247.bankingapi.service.BankingUserDetailsService [http-nio-8081-exec-4] User: User{username='sachin', password='sachinpass', createdTime=2019-11-20T09:36:32, lastUpdatedTime=null, roles=[Role{rolename='ROLE_BANKER'}]}
+2019-11-20 09:37:14,267 INFO in.rgukt.r081247.bankingapi.controller.BankerController [http-nio-8081-exec-4] In BankerController.updatePassword()
+2019-11-20 09:37:14,268 INFO in.rgukt.r081247.bankingapi.controller.BankerController [http-nio-8081-exec-4] username: sachin
+2019-11-20 09:37:14,269 INFO in.rgukt.r081247.bankingapi.controller.BankerController [http-nio-8081-exec-4] user: User{username='sachin', password='sachinpasswordupdated', createdTime=null, lastUpdatedTime=null, roles=[]}
+2019-11-20 09:37:14,272 INFO in.rgukt.r081247.bankingapi.service.UserService [http-nio-8081-exec-4] User: User{username='sachin', password='sachinpasswordupdated', createdTime=null, lastUpdatedTime=null, roles=[]}
+2019-11-20 09:37:14,286 INFO in.rgukt.r081247.bankingapi.service.UserService [http-nio-8081-exec-4] Banker or Customer: User{username='sachin', password='sachinpass', createdTime=2019-11-20T09:36:32, lastUpdatedTime=null, roles=[Role{rolename='ROLE_BANKER'}]}
+2019-11-20 09:37:44,017 INFO in.rgukt.r081247.bankingapi.service.BankingUserDetailsService [http-nio-8081-exec-5] usename: 'sachin'
+2019-11-20 09:37:44,050 INFO in.rgukt.r081247.bankingapi.service.BankingUserDetailsService [http-nio-8081-exec-5] User: User{username='sachin', password='sachinpass', createdTime=2019-11-20T09:36:32, lastUpdatedTime=null, roles=[Role{rolename='ROLE_BANKER'}]}
+2019-11-20 09:43:36,339 INFO org.springframework.boot.StartupInfoLogger [main] Starting BankingApiApplication on vinod with PID 7905 (/home/vinod/Desktop/desk/projects/bankingapi/target/classes started by vinod in /home/vinod/Desktop/desk/projects/bankingapi)
+2019-11-20 09:43:36,340 DEBUG org.springframework.boot.StartupInfoLogger [main] Running with Spring Boot v2.1.9.RELEASE, Spring v5.1.10.RELEASE
+2019-11-20 09:43:36,342 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to default profiles: default
+2019-11-20 09:43:47,159 INFO org.springframework.boot.StartupInfoLogger [main] Started BankingApiApplication in 11.954 seconds (JVM running for 21.293)
+2019-11-20 09:44:10,641 INFO org.springframework.boot.StartupInfoLogger [main] Starting BankingApiApplication on vinod with PID 7961 (/home/vinod/Desktop/desk/projects/bankingapi/target/classes started by vinod in /home/vinod/Desktop/desk/projects/bankingapi)
+2019-11-20 09:44:10,642 DEBUG org.springframework.boot.StartupInfoLogger [main] Running with Spring Boot v2.1.9.RELEASE, Spring v5.1.10.RELEASE
+2019-11-20 09:44:10,643 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to default profiles: default
+2019-11-20 09:44:21,610 INFO org.springframework.boot.StartupInfoLogger [main] Started BankingApiApplication in 11.878 seconds (JVM running for 21.313)
+2019-11-20 09:44:35,661 INFO in.rgukt.r081247.bankingapi.service.BankingUserDetailsService [http-nio-8081-exec-2] usename: 'sachin'
+2019-11-20 09:44:35,814 INFO in.rgukt.r081247.bankingapi.service.BankingUserDetailsService [http-nio-8081-exec-2] User: User{username='sachin', password='sachinpass', createdTime=2019-11-20T09:36:32, lastUpdatedTime=null, roles=[Role{rolename='ROLE_BANKER'}]}
+2019-11-20 09:44:39,210 INFO in.rgukt.r081247.bankingapi.service.BankingUserDetailsService [http-nio-8081-exec-3] usename: 'sachin'
+2019-11-20 09:44:39,233 INFO in.rgukt.r081247.bankingapi.service.BankingUserDetailsService [http-nio-8081-exec-3] User: User{username='sachin', password='sachinpass', createdTime=2019-11-20T09:36:32, lastUpdatedTime=null, roles=[Role{rolename='ROLE_BANKER'}]}
+2019-11-20 09:44:39,311 INFO in.rgukt.r081247.bankingapi.controller.BankerController [http-nio-8081-exec-3] In BankerController.updatePassword()
+2019-11-20 09:44:39,312 INFO in.rgukt.r081247.bankingapi.controller.BankerController [http-nio-8081-exec-3] username: sachi
+2019-11-20 09:44:39,313 INFO in.rgukt.r081247.bankingapi.controller.BankerController [http-nio-8081-exec-3] user: User{username='sachi', password='sachinpasswordupdated', createdTime=null, lastUpdatedTime=null, roles=[]}
+2019-11-20 09:44:39,328 INFO in.rgukt.r081247.bankingapi.service.UserService [http-nio-8081-exec-3] User: User{username='sachi', password='sachinpasswordupdated', createdTime=null, lastUpdatedTime=null, roles=[]}
+2019-11-20 09:44:39,351 ERROR in.rgukt.r081247.bankingapi.exception.BankingResponseEntityExceptionHandler [http-nio-8081-exec-3] ErrorResponse{message='Banking API Error', details=[User with 'sachi ' username not present in the system.]}
+2019-11-20 09:45:14,672 INFO in.rgukt.r081247.bankingapi.service.BankingUserDetailsService [http-nio-8081-exec-5] usename: 'sachin'
+2019-11-20 09:45:14,694 INFO in.rgukt.r081247.bankingapi.service.BankingUserDetailsService [http-nio-8081-exec-5] User: User{username='sachin', password='sachinpass', createdTime=2019-11-20T09:36:32, lastUpdatedTime=null, roles=[Role{rolename='ROLE_BANKER'}]}
+2019-11-20 09:45:14,704 INFO in.rgukt.r081247.bankingapi.controller.BankerController [http-nio-8081-exec-5] In BankerController.updatePassword()
+2019-11-20 09:45:14,704 INFO in.rgukt.r081247.bankingapi.controller.BankerController [http-nio-8081-exec-5] username: sachin
+2019-11-20 09:45:14,705 INFO in.rgukt.r081247.bankingapi.controller.BankerController [http-nio-8081-exec-5] user: User{username='sachin', password='sachinpasswordupdated', createdTime=null, lastUpdatedTime=null, roles=[]}
+2019-11-20 09:45:14,709 INFO in.rgukt.r081247.bankingapi.service.UserService [http-nio-8081-exec-5] User: User{username='sachin', password='sachinpasswordupdated', createdTime=null, lastUpdatedTime=null, roles=[]}
+2019-11-20 09:45:14,729 INFO in.rgukt.r081247.bankingapi.service.UserService [http-nio-8081-exec-5] User before password update: User{username='sachin', password='sachinpass', createdTime=2019-11-20T09:36:32, lastUpdatedTime=null, roles=[Role{rolename='ROLE_BANKER'}]}
+2019-11-20 09:45:14,750 INFO in.rgukt.r081247.bankingapi.service.UserService [http-nio-8081-exec-5] User after password update: User{username='sachin', password='sachinpasswordupdated', createdTime=2019-11-20T09:36:32, lastUpdatedTime=null, roles=[Role{rolename='ROLE_BANKER'}]}
+2019-11-20 09:45:14,805 ERROR in.rgukt.r081247.bankingapi.exception.BankingResponseEntityExceptionHandler [http-nio-8081-exec-5] ErrorResponse{message='Banking API Error', details=[Could not commit JPA transaction; nested exception is javax.persistence.RollbackException: Error while committing the transaction]}
+2019-11-20 09:47:31,108 INFO org.springframework.boot.StartupInfoLogger [main] Starting BankingApiApplication on vinod with PID 8084 (/home/vinod/Desktop/desk/projects/bankingapi/target/classes started by vinod in /home/vinod/Desktop/desk/projects/bankingapi)
+2019-11-20 09:47:31,109 DEBUG org.springframework.boot.StartupInfoLogger [main] Running with Spring Boot v2.1.9.RELEASE, Spring v5.1.10.RELEASE
+2019-11-20 09:47:31,111 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to default profiles: default
+2019-11-20 09:47:42,250 INFO org.springframework.boot.StartupInfoLogger [main] Started BankingApiApplication in 12.053 seconds (JVM running for 20.965)
+2019-11-20 09:48:20,791 INFO in.rgukt.r081247.bankingapi.service.BankingUserDetailsService [http-nio-8081-exec-2] usename: 'sachin'
+2019-11-20 09:48:20,940 INFO in.rgukt.r081247.bankingapi.service.BankingUserDetailsService [http-nio-8081-exec-2] User: User{username='sachin', password='sachinpass', createdTime=2019-11-20T09:36:32, lastUpdatedTime=null, roles=[Role{rolename='ROLE_BANKER'}]}
+2019-11-20 09:48:21,220 INFO in.rgukt.r081247.bankingapi.controller.BankerController [http-nio-8081-exec-2] In BankerController.updatePassword()
+2019-11-20 09:48:21,221 INFO in.rgukt.r081247.bankingapi.controller.BankerController [http-nio-8081-exec-2] username: sachin
+2019-11-20 09:48:21,223 INFO in.rgukt.r081247.bankingapi.controller.BankerController [http-nio-8081-exec-2] user: User{username='sachin', password='updated', createdTime=null, lastUpdatedTime=null, roles=[]}
+2019-11-20 09:48:21,242 INFO in.rgukt.r081247.bankingapi.service.UserService [http-nio-8081-exec-2] User: User{username='sachin', password='updated', createdTime=null, lastUpdatedTime=null, roles=[]}
+2019-11-20 09:48:21,256 INFO in.rgukt.r081247.bankingapi.service.UserService [http-nio-8081-exec-2] User before password update: User{username='sachin', password='sachinpass', createdTime=2019-11-20T09:36:32, lastUpdatedTime=null, roles=[Role{rolename='ROLE_BANKER'}]}
+2019-11-20 09:48:21,280 INFO in.rgukt.r081247.bankingapi.service.UserService [http-nio-8081-exec-2] User after password update: User{username='sachin', password='updated', createdTime=2019-11-20T09:36:32, lastUpdatedTime=null, roles=[Role{rolename='ROLE_BANKER'}]}

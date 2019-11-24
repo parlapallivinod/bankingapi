@@ -37,8 +37,8 @@ public class BankingResponseEntityExceptionHandler extends ResponseEntityExcepti
         return new ResponseEntity<>(error, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
-    @ExceptionHandler(UsernamePresentException.class)
-    public final ResponseEntity<Object> handleUsernamePresentException(UsernamePresentException ex, WebRequest request) {
+    @ExceptionHandler(UserPresentException.class)
+    public final ResponseEntity<Object> handleUsernamePresentException(UserPresentException ex, WebRequest request) {
         List<String> details = new ArrayList<>();
         details.add(ex.getLocalizedMessage());
         ErrorResponse error = new ErrorResponse("User Registration Error", details);

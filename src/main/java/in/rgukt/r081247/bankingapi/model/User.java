@@ -33,6 +33,9 @@ public class User implements Comparable<User>{
     @Column(name = "password", length = 128, nullable = false)
     private String password;
 
+    @Column(name = "balance", nullable = false)
+    private Long balance = 0l;
+
     //@NotNull(message = "createdTime must not be empty")
     @Column(name = "created_time", nullable = false)
     private LocalDateTime createdTime;
@@ -41,7 +44,7 @@ public class User implements Comparable<User>{
     private LocalDateTime lastUpdatedTime;
 
     @JsonIgnore
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "user_role",
             joinColumns = @JoinColumn(name = "username"),
             inverseJoinColumns = @JoinColumn(name = "rolename"))
@@ -50,9 +53,10 @@ public class User implements Comparable<User>{
     public User() {
     }
 
-    public User(String username, String password, LocalDateTime createdTime, LocalDateTime lastUpdatedTime, Set<Role> roles) {
+    public User(String username, String password, Long balance, LocalDateTime createdTime, LocalDateTime lastUpdatedTime, Set<Role> roles) {
         this.username = username;
         this.password = password;
+        this.balance = balance;
         this.createdTime = createdTime;
         this.lastUpdatedTime = lastUpdatedTime;
         this.roles = roles;
@@ -72,6 +76,14 @@ public class User implements Comparable<User>{
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public void setBalance(Long balance) {
+        this.balance = balance;
+    }
+
+    public Long getBalance() {
+        return this.balance;
     }
 
     public LocalDateTime getCreatedTime() {
@@ -111,23 +123,12 @@ public class User implements Comparable<User>{
         return Objects.hash(getUsername());
     }
 
-    /*
     @Override
     public String toString() {
         return "User{" +
-                "username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", createdTime=" + createdTime +
-                ", lastUpdatedTime=" + lastUpdatedTime +
-                '}';
-    }
-    */
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "username='" + username + '\'' +
-                ", password='" + password + '\'' +
+                "username='" + username + "'" +
+                ", balance=" + balance +
+                ", password='" + password + "'" +
                 ", createdTime=" + createdTime +
                 ", lastUpdatedTime=" + lastUpdatedTime +
                 ", roles=" + roles +

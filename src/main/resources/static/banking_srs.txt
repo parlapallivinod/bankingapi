@@ -3,30 +3,20 @@ Banking API
 -----------
 	This application is used to simulate banking financial systems present in our society.
 
-Below two roles are present in this system.
-	# ROLE_BANKER
+Belo roles are present in this system.
 	# ROLE_CUSTOMER
-
-ROLE_BANKER
------------
-	Users with this role can 
-        # create new banks
-        # remove old banks if no customer is using them
 
 ROLE_CUSTOMER
 -------------
 	Users with this role can
-        # create new accounts
+        # create update his/her passwor, delete user.
         # can perform transactions of type deposit, withdraw and transfer on their accounts.
-        # close old accounts
 
 Tables
 ------
 	# role
 	# user
 	# user_role
-	# bank
-	# account
 	# transaction
 
 role
@@ -35,24 +25,13 @@ role
 user
 	username
 	password
+	balance
 	created_time
 
 user_role
 	username
 	rolename
 
-bank
-	name
-	created_time
-	created_by
-
-account
-	name
-	bank_name
-	balance
-	created_time
-	created_by
-username
 transaction
   id
   type
@@ -64,14 +43,13 @@ transaction
   message
 
 DROP TABLE transaction;
-DROP TABLE account;
-DROP TABLE bank;
 DROP TABLE user_role;
 DROP TABLE user;
 DROP TABLE role;
 
 CREATE TABLE role
 (
+    rolename VARCHAR(128),
 	CONSTRAINT pk_role PRIMARY KEY(rolename)
 );
 
@@ -82,6 +60,7 @@ CREATE TABLE user
 (
 	username VARCHAR(128),
 	password VARCHAR(128) NOT NULL,
+	balance BIGINT DEFAULT 0 NOT NULL,
 	created_time TIMESTAMP NOT NULL,
 	last_updated_time TIMESTAMP,
 
@@ -98,69 +77,25 @@ CREATE TABLE user_role
 	CONSTRAINT fk_user_role__role FOREIGN KEY(rolename) REFERENCES role(rolename)
 );
 
-CREATE TABLE bank
-(
-	name VARCHAR(128),
-	created_time TIMESTAMP NOT NULL,
-	created_by VARCHAR(128) NOT NULL,
-	
-	CONSTRAINT pk_bank PRIMARY KEY(name),
-	CONSTRAINT fk_bank__user FOREIGN KEY(created_by) REFERENCES user(username)
-);
- 
-CREATE TABLE account
-(
-	name VARCHAR(128),
-	bank_name VARCHAR(128) NOT NULL,
-	balance BIGINT DEFAULT 0 NOT NULL,
-	created_time TIMESTAMP NOT NULL,
-	created_by VARCHAR(128) NOT NULL,
-	
-	CONSTRAINT pk_account PRIMARY KEY(name),
-	CONSTRAINT fk_account__bank FOREIGN KEY(bank_name) REFERENCES bank(name),
-	CONSTRAINT fk_account__user FOREIGN KEY(created_by) REFERENCES user(username)
-);
-
 CREATE TABLE transaction
 (
 	id BIGINT AUTO_INCREMENT,
 	type VARCHAR(128) NOT NULL,
 	amount BIGINT NOT NULL,
-	from_account VARCHAR(128),
-	to_account VARCHAR(128),
+	from_user VARCHAR(128),
+	to_user VARCHAR(128),
 	created_time TIMESTAMP NOT NULL,
 	status VARCHAR(128) NOT NULL,
 	message VARCHAR(1024),
 	
 	CONSTRAINT pk_transaction PRIMARY KEY(id),
 	CONSTRAINT ck_transaction__type CHECK(type in ("DEPOSIT", "WITHDRAW", "TRANSFER")),
-	CONSTRAINT fk_transaction__account__from FOREIGN KEY(from_account) REFERENCES account(name),
-	CONSTRAINT fk_transaction__account__to FOREIGN KEY(to_account) REFERENCES account(name),
+	CONSTRAINT fk_transaction__user__from FOREIGN KEY(from_user) REFERENCES user(username),
+	CONSTRAINT fk_transaction__user__to FOREIGN KEY(to_user) REFERENCES user(username),
 	CONSTRAINT ck_transaction__status CHECK(status in ("SUCCEDED", "FAILED"))
 );
 
 alter table banking.transaction AUTO_INCREMENT=1000000000;
-
-Banker Operations
------------------
-
-	A banker can create any number of banks.
-
-		POST https://localhost:8080/banking/api/v1/bankers/register
-			-- username
-			-- password
-	
-			Above operation is used to create a new banker.
-	
-		PUT https://localhost:8080/banking/api/v1/bankers/{username}
-			-- password
-	
-			Above operation is used to update a banker's password. A banker can update his/her password only.
-
-		DELETE https://localhost:8080/banking/api/v1/bankers/{username}
-	
-			Above operation is used to delete a banker's account. A banker can delete his/her account only.
-			A banker can not be deleted if he / she has one or more banks.
 
 Customer Operations
 -------------------
@@ -171,67 +106,17 @@ Customer Operations
 			-- username
 			-- password
 	
-			Above operation is used to create a new customer.
+			Above operation is used to create a new customer with default balance 0.
 	
-		PUT https://localhost:8080/banking/api/v1/customers/{username}
+		PUT https://localhost:8080/banking/api/v1/customers
 			-- password
 	
 			Above operation is used to update a customer's password. A customer can update his/her password only.
 
-		DELETE https://localhost:8080/banking/api/v1/customer/{username}
+		DELETE https://localhost:8080/banking/api/v1/customers
 	
 			Above operation is used to delete a customer's account. A customer can delete his/her account only.
-			A customer can not be deleted if he / she has one or more bank accounts.
-
-Bank Operations
-----------------
-
-	A bank is an entity which can have one or more customers and it is created by a banker.
-	
-		POST https://localhost:8080/banking/api/v1/banks
-			-- name
-	
-			Above operation is used to create a new bank.
-		
-		GET https://localhost:8080/banking/api/v1/allbanks
-		
-			Above operation is used to get list of all banks present in the system.
-	
-		GET https://localhost:8080/banking/api/v1/banks
-		
-			Above operation is used to get list of all banks of a particular banker who has provided authentication.
-	
-		GET https://localhost:8080/banking/api/v1/banks/{name}
-		
-			Above operation is used to get details of a particular bank which is created by a banker who has provided authentication.
-	
-		DELETE https://localhost:8080/banking/api/v1/banks/{name}
-	
-			Above operation is used to delete a bank which is created by a banker who has provided authentication details.
-			A bank can be deleted only if it doesn't have any accounts associated with it.
-	
-Account Operations
-------------------
-
-	An account belongs to a bank. A customer can create only one account from a particular bank. Account supports withdraw, deposit, transfer operations.
-	 
-	 	POST https://localhost:8080/banking/api/v1/accounts
-	 		-- name
-	 		-- bankname
-	 	
-	 		Above operation is used to create a new account under a bank. A customer can create only one account under a particular bank.
-	 	
-	 	GET https://localhost:8080/banking/api/v1/accounts
-	 		
-	 		Above operation is used to get all accounts' details of a particular customer.
-	 	
-	 	GET https://localhost:8080/banking/api/v1/accounts/{name}
-	 	
-	 		Above operation is used to get details of a particular account created by a customer who has provided authentication details.
-	 	
-	 	DELETE https://localhost:8080/banking/api/v1/accounts/{name}
-	 	
-	 		Above operation is used to delete an account which is created by customer. An account can be deleted only if account balance is 0.
+			A customer can not be deleted if he / she has balance other than 0.
 
 
 Transaction Operations
@@ -239,21 +124,21 @@ Transaction Operations
 
 	A transaction can be withdraw, deposit or transfer type.
 
-		POST https://localhost:8080/banking/api/v1/accounts/{name}/transactions
+		POST https://localhost:8080/banking/api/v1/customers/transactions
 			-- type
 			-- amount
 			-- from
 			-- to
 	
-			Above operation is used to create a transactions under an account which belongs to authenticated customer.
+			Above operation is used to create a transactions which belongs to authenticated customer.
 
-		GET https://localhost:8080/banking/api/v1/accounts/{name}/transactions
+		GET https://localhost:8080/banking/api/v1/customers/transactions
 	
-			Above operation is used to get all transactions under an account which belongs to authenticated customer.
+			Above operation is used to get all transactions which belong to authenticated customer.
 
-	 	GET https://localhost:8080/banking/api/v1/accounts/{accountId}/transactions/{id}
+	 	GET https://localhost:8080/banking/api/v1/customers/transactions/{id}
 	 		
-	 		Above operation is used to get details of a transaction under an account which belongs to authenticated customer.
+	 		Above operation is used to get details of a transaction which belongs to authenticated customer.
 
 
 

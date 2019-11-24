@@ -1,0 +1,24 @@
+2019-11-11 08:37:59,345 INFO org.springframework.boot.StartupInfoLogger [main] Starting BankingApiApplication on vinod with PID 4132 (/home/vinod/Desktop/desk/projects/bankingapi/target/classes started by vinod in /home/vinod/Desktop/desk/projects/bankingapi)
+2019-11-11 08:37:59,353 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to default profiles: default
+2019-11-11 08:38:19,751 INFO org.springframework.boot.StartupInfoLogger [main] Started BankingApiApplication in 24.267 seconds (JVM running for 43.259)
+2019-11-11 08:40:50,519 INFO in.rgukt.r081247.bankingapi.controller.BankerController [http-nio-8081-exec-2] Begin: BankerController.registerBanker()
+2019-11-11 08:40:50,551 INFO in.rgukt.r081247.bankingapi.service.UserService [http-nio-8081-exec-2] Begin: UserService.registerUser()
+2019-11-11 08:40:50,583 INFO in.rgukt.r081247.bankingapi.service.UserService [http-nio-8081-exec-2] User: User{username='lakshmi', password='password', createdTime=2019-11-11T08:40:50.527873, lastUpdatedTime=null, roles=[Role{rolename='ROLE_BANKER'}]}
+2019-11-11 08:40:51,382 ERROR in.rgukt.r081247.bankingapi.exception.BankingResponseEntityExceptionHandler [http-nio-8081-exec-2] ErrorResponse{message='User Registration Error', details=[A banker with same username already present. Kindly try with a different username.]}
+2019-11-11 08:42:06,148 INFO in.rgukt.r081247.bankingapi.controller.BankerController [http-nio-8081-exec-4] Begin: BankerController.registerBanker()
+2019-11-11 08:42:06,151 INFO in.rgukt.r081247.bankingapi.service.UserService [http-nio-8081-exec-4] Begin: UserService.registerUser()
+2019-11-11 08:42:06,152 INFO in.rgukt.r081247.bankingapi.service.UserService [http-nio-8081-exec-4] User: User{username='harik', password='password', createdTime=2019-11-11T08:42:06.149714, lastUpdatedTime=null, roles=[Role{rolename='ROLE_BANKER'}]}
+2019-11-11 08:42:06,181 ERROR in.rgukt.r081247.bankingapi.exception.BankingResponseEntityExceptionHandler [http-nio-8081-exec-4] ErrorResponse{message='User Registration Error', details=[A banker with same username already present. Kindly try with a different username.]}
+2019-11-11 09:00:48,787 INFO org.springframework.boot.StartupInfoLogger [main] Starting BankingApiApplication on vinod with PID 5401 (/home/vinod/Desktop/desk/projects/bankingapi/target/classes started by vinod in /home/vinod/Desktop/desk/projects/bankingapi)
+2019-11-11 09:00:48,793 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to default profiles: default
+2019-11-11 09:01:02,066 INFO org.springframework.boot.StartupInfoLogger [main] Started BankingApiApplication in 15.244 seconds (JVM running for 29.804)
+2019-11-11 09:02:48,849 INFO in.rgukt.r081247.bankingapi.service.UserService [http-nio-8081-exec-3] User: User{username='mahesh', password='password', createdTime=2019-11-11T09:02:48.798138, lastUpdatedTime=null, roles=[Role{rolename='ROLE_BANKER'}]}
+2019-11-11 09:02:49,292 INFO in.rgukt.r081247.bankingapi.service.UserService [http-nio-8081-exec-3] User: has been registered
+2019-11-11 09:05:24,811 INFO org.springframework.boot.StartupInfoLogger [main] Starting BankingApiApplication on vinod with PID 5569 (/home/vinod/Desktop/desk/projects/bankingapi/target/classes started by vinod in /home/vinod/Desktop/desk/projects/bankingapi)
+2019-11-11 09:05:24,818 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to default profiles: default
+2019-11-11 09:05:34,696 INFO org.springframework.boot.StartupInfoLogger [main] Started BankingApiApplication in 10.729 seconds (JVM running for 19.007)
+2019-11-11 09:06:52,775 INFO org.springframework.boot.StartupInfoLogger [main] Starting BankingApiApplication on vinod with PID 5651 (/home/vinod/Desktop/desk/projects/bankingapi/target/classes started by vinod in /home/vinod/Desktop/desk/projects/bankingapi)
+2019-11-11 09:06:52,786 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to default profiles: default
+2019-11-11 09:07:01,302 INFO org.springframework.boot.StartupInfoLogger [main] Started BankingApiApplication in 9.613 seconds (JVM running for 15.324)
+2019-11-11 09:20:09,391 INFO in.rgukt.r081247.bankingapi.service.UserService [http-nio-8081-exec-5] User: User{username='mahesh', password='password', createdTime=2019-11-11T09:20:09.346926, lastUpdatedTime=null, roles=[Role{rolename='ROLE_BANKER'}]}
+2019-11-11 09:20:09,649 ERROR in.rgukt.r081247.bankingapi.exception.BankingResponseEntityExceptionHandler [http-nio-8081-exec-5] ErrorResponse{message='User Registration Error', details=[A banker with 'mahesh' username already present in the system. Kindly try with a different username.]}

@@ -6,11 +6,11 @@
 
 package in.rgukt.r081247.bankingapi.service;
 
-import in.rgukt.r081247.bankingapi.exception.UserNotPresentException;
-import in.rgukt.r081247.bankingapi.exception.UserPresentException;
+import in.rgukt.r081247.bankingapi.exception.UserNotFoundException;
+import in.rgukt.r081247.bankingapi.exception.UserFoundException;
 import in.rgukt.r081247.bankingapi.model.User;
-import in.rgukt.r081247.bankingapi.repository.UserRepository;
-import in.rgukt.r081247.bankingapi.util.UserUtil;
+import in.rgukt.r081247.bankingapi.repository.UserRepository;;
+import in.rgukt.r081247.bankingapi.util.UserUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +34,7 @@ public class UserService {
         LOGGER.info("User: " + user);
         Optional<User> banker = userRepository.findById(user.getUsername());
         if (banker.isPresent()) {
-            throw new UserPresentException("A user with '" + user.getUsername() + "' username already present in the system. Kindly try with a different username.");
+            throw new UserFoundException("A user with '" + user.getUsername() + "' username already present in the system. Kindly try with a different username.");
         }
         user = userRepository.save(user);
         LOGGER.info("User has been registered");
@@ -44,15 +44,31 @@ public class UserService {
     @Secured({"ROLE_CUSTOMER"})
     public User updateUserPassword(User user) {
         LOGGER.info("User from request: " + user);
-        User userFromRepository = userRepository.findById(UserUtil.getAuthenticatedUsername()).get();
+        String username = UserUtils.getAuthenticatedUsername();
+        LOGGER.info("Username: " + username);
+        Optional<User> optionalUserFromRepository = userRepository.findById(username);
+        if (! optionalUserFromRepository.isPresent()) {
+            throw new UserFoundException("User with '" + username + "' username not found in the system.");
+        }
+        User userFromRepository = optionalUserFromRepository.get();
         LOGGER.info("User from repository: " + userFromRepository);
         userFromRepository.setPassword(user.getPassword());
         userFromRepository.setLastUpdatedTime(LocalDateTime.now());
         User passwordUpdatedUser = userRepository.save(userFromRepository);
         LOGGER.info("User after password updation: " + passwordUpdatedUser);
         return passwordUpdatedUser;
-
     }
 
-
+    @Secured({"ROLE_CUSTOMER"})
+    public User deleteUser() {
+        String username = UserUtils.getAuthenticatedUsername();
+        LOGGER.info("Username: " + username);
+        Optional<User> optionalUser = userRepository.findById(username);
+        if (! optionalUser.isPresent()) {
+            throw new UserNotFoundException("User with '" + username + "' username not found in the system.");
+        }
+        User user = optionalUser.get();
+        userRepository.delete(user);
+        return user;
+    }
 }

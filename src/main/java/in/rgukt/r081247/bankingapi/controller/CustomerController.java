@@ -34,7 +34,7 @@ public class CustomerController {
 	private UserService userService;
 
 	@PostMapping(value="/registration", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Object> registerBanker(@Valid @RequestBody User customer) {
+	public ResponseEntity<Object> registerCustomer(@Valid @RequestBody User customer) {
 		Role role = new Role();
 		role.setRolename("ROLE_CUSTOMER");
 		Set<Role> roles = new HashSet<>();
@@ -52,15 +52,14 @@ public class CustomerController {
 	}
 
 	@PutMapping(value="", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Object> updatePassword(@Valid @RequestBody User customer) {
+	public ResponseEntity<Object> updateCustomerPassword(@Valid @RequestBody User customer) {
 		customer = userService.updateUserPassword(customer);
 		return new ResponseEntity<>(customer, HttpStatus.OK);
 	}
 
-	@DeleteMapping(value="", produces = MediaType.TEXT_HTML_VALUE)
-	public String deleteBanker() {
-		LOGGER.info("In BankerController.deleteBanker()");
-		return "<h2>Banking REST API</h2><hr/>" +
-				"BankerController.deleteBanker()";
+	@DeleteMapping(value="", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<Object> deleteCustomer() {
+		User user = userService.deleteUser();
+		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
 }

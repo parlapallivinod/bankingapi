@@ -37,11 +37,20 @@ public class BankingResponseEntityExceptionHandler extends ResponseEntityExcepti
         return new ResponseEntity<>(error, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
-    @ExceptionHandler(UserPresentException.class)
-    public final ResponseEntity<Object> handleUsernamePresentException(UserPresentException ex, WebRequest request) {
+    @ExceptionHandler(UserFoundException.class)
+    public final ResponseEntity<Object> handleUserFoundException(UserFoundException ex, WebRequest request) {
         List<String> details = new ArrayList<>();
         details.add(ex.getLocalizedMessage());
         ErrorResponse error = new ErrorResponse("User Registration Error", details);
+        LOGGER.error(error.toString());
+        return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(UserNotFoundException.class)
+    public final ResponseEntity<Object> handleUserNotFoundException(UserNotFoundException ex, WebRequest request) {
+        List<String> details = new ArrayList<>();
+        details.add(ex.getLocalizedMessage());
+        ErrorResponse error = new ErrorResponse("User Deletion Error", details);
         LOGGER.error(error.toString());
         return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
     }

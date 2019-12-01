@@ -33,7 +33,7 @@ public class CustomerController {
 	@Autowired
 	private UserService userService;
 
-	@PostMapping(value="/registration", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	@PostMapping(value = "/registration", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Object> registerCustomer(@Valid @RequestBody User customer) {
 		Role role = new Role();
 		role.setRolename("ROLE_CUSTOMER");
@@ -51,13 +51,18 @@ public class CustomerController {
 		return new ResponseEntity<>(customer, HttpStatus.CREATED);
 	}
 
-	@PutMapping(value="", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<Object> getCustomer() {
+		User customer = userService.getUser();
+		return new ResponseEntity<>(customer, HttpStatus.OK);
+	}
+	@PutMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Object> updateCustomerPassword(@Valid @RequestBody User customer) {
 		customer = userService.updateUserPassword(customer);
 		return new ResponseEntity<>(customer, HttpStatus.OK);
 	}
 
-	@DeleteMapping(value="", produces = MediaType.APPLICATION_JSON_VALUE)
+	@DeleteMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Object> deleteCustomer() {
 		User user = userService.deleteUser();
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);

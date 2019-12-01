@@ -3,13 +3,13 @@ Banking API
 -----------
 	This application is used to simulate banking financial systems present in our society.
 
-Belo roles are present in this system.
+Below roles are present in this system.
 	# ROLE_CUSTOMER
 
 ROLE_CUSTOMER
 -------------
 	Users with this role can
-        # create update his/her passwor, delete user.
+        # update their password, delete their account.
         # can perform transactions of type deposit, withdraw and transfer on their accounts.
 
 Tables
@@ -107,10 +107,14 @@ Customer Operations
 			-- password
 	
 			Above operation is used to create a new customer with default balance 0.
-	
+
+	    Get https://localhost:8080/banking/api/v1/customers
+
+    			Above operation is used to get a customer's details.
+
 		PUT https://localhost:8080/banking/api/v1/customers
 			-- password
-	
+
 			Above operation is used to update a customer's password. A customer can update his/her password only.
 
 		DELETE https://localhost:8080/banking/api/v1/customers
@@ -130,15 +134,15 @@ Transaction Operations
 			-- from
 			-- to
 	
-			Above operation is used to create a transactions which belongs to authenticated customer.
+			Above operation is used to create a transactions which belongs to the authenticated customer.
 
 		GET https://localhost:8080/banking/api/v1/customers/transactions
 	
-			Above operation is used to get all transactions which belong to authenticated customer.
+			Above operation is used to get all transactions which belong to the authenticated customer.
 
 	 	GET https://localhost:8080/banking/api/v1/customers/transactions/{id}
 	 		
-	 		Above operation is used to get details of a transaction which belongs to authenticated customer.
+	 		Above operation is used to get details of a transaction which belongs to the authenticated customer.
 
 
 

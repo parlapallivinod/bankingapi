@@ -71,4 +71,17 @@ public class UserService {
         userRepository.delete(user);
         return user;
     }
+
+    @Secured({"ROLE_CUSTOMER"})
+    public User getUser() {
+        String username = UserUtils.getAuthenticatedUsername();
+        LOGGER.info("Username: " + username);
+        Optional<User> optionalUser = userRepository.findById(username);
+        if (! optionalUser.isPresent()) {
+            throw new UserNotFoundException("User with '" + username + "' username not found in the system.");
+        }
+        User user = optionalUser.get();
+        LOGGER.info("User: " + user);
+        return user;
+    }
 }

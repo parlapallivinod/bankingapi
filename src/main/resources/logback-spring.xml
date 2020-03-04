@@ -3,7 +3,7 @@
 <!--
     Author: Vinod Parlapalli
     Created on 2019/10/13
-    All spring framwork INFO or above level logs are forwared to console.
+    All spring framework INFO or above level logs are forwarded to console.
     All banking api INFO or above level logs are forwarded to ./logs/banking_api_logger.log file.
 -->
 
@@ -31,7 +31,7 @@
         <rollingPolicy
                 class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!-- rollover daily and when the file reaches 10 MegaBytes -->
-            <fileNamePattern>${LOGS}/archived/banking_api_logger-%d{yyyy-MM-dd}.%i.log
+            <fileNamePattern>${LOGS}/archive/banking_api_logger-%d{yyyy-MM-dd}.%i.log
             </fileNamePattern>
             <timeBasedFileNamingAndTriggeringPolicy
                     class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">

@@ -1,16 +1,21 @@
-
+---------------------------------------------
 Banking API
------------
-	This application is used to simulate banking financial systems present in our society.
+---------------------------------------------
+
+	This application is used to simulate financial banking systems present in our society.
 
 Below roles are present in this system.
 	# ROLE_CUSTOMER
+#
+# Below role may be added based on requirement in future.
+#   # ROLE_BANKER
+#
 
 ROLE_CUSTOMER
 -------------
 	Users with this role can
-        # update their password, delete their account.
-        # can perform transactions of type deposit, withdraw and transfer on their accounts.
+        # browse account details, update their password and delete their account.
+        # browse transactions history and perform transactions of type deposit, withdraw and transfer on their accounts.
 
 Tables
 ------
@@ -36,8 +41,8 @@ transaction
   id
   type
   amount
-  from
-  to
+  from_user
+  to_user
   created_time
   status
   message
@@ -90,9 +95,9 @@ CREATE TABLE transaction
 	
 	CONSTRAINT pk_transaction PRIMARY KEY(id),
 	CONSTRAINT ck_transaction__type CHECK(type in ("DEPOSIT", "WITHDRAW", "TRANSFER")),
-	CONSTRAINT fk_transaction__user__from FOREIGN KEY(from_user) REFERENCES user(username),
-	CONSTRAINT fk_transaction__user__to FOREIGN KEY(to_user) REFERENCES user(username),
-	CONSTRAINT ck_transaction__status CHECK(status in ("SUCCEDED", "FAILED"))
+	CONSTRAINT fk_transaction__user__from_user FOREIGN KEY(from_user) REFERENCES user(username),
+	CONSTRAINT fk_transaction__user__to_user FOREIGN KEY(to_user) REFERENCES user(username),
+	CONSTRAINT ck_transaction__status CHECK(status in ("SUCCESS", "FAILURE"))
 );
 
 alter table banking.transaction AUTO_INCREMENT=1000000000;
@@ -100,7 +105,7 @@ alter table banking.transaction AUTO_INCREMENT=1000000000;
 Customer Operations
 -------------------
 
-	A customer can create any number of bank accounts but only one account per each bank.
+	A customer can create an account to perform transactions.
 
 		POST https://localhost:8080/banking/api/v1/customers/register
 			-- username
@@ -110,7 +115,8 @@ Customer Operations
 
 	    Get https://localhost:8080/banking/api/v1/customers
 
-    			Above operation is used to get a customer's details.
+    		Above operation is used to get a customer's details. This operation is also
+    		used to verify whether login credentials are valid or not for the given customer username.
 
 		PUT https://localhost:8080/banking/api/v1/customers
 			-- password
@@ -134,16 +140,17 @@ Transaction Operations
 			-- from
 			-- to
 	
-			Above operation is used to create a transactions which belongs to the authenticated customer.
+			Above operation is used to create a transaction which belongs to the authenticated customer.
 
-		GET https://localhost:8080/banking/api/v1/customers/transactions
+		GET https://localhost:8080/banking/api/v1/customers/transactions?pageNo=###&pageSize=###
 	
-			Above operation is used to get all transactions which belong to the authenticated customer.
-
-	 	GET https://localhost:8080/banking/api/v1/customers/transactions/{id}
-	 		
-	 		Above operation is used to get details of a transaction which belongs to the authenticated customer.
-
-
+			Above operation is used to get paginated transactions which belong to the authenticated customer.
+#
+# Below API may be implemented in future based on requirement
+#
+#	 	GET https://localhost:8080/banking/api/v1/customers/transactions/{id}
+#
+#	 		Above operation is used to get details of a transaction which belongs to the authenticated customer.
+#
 
 

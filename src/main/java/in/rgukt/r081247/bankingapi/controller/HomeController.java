@@ -14,9 +14,8 @@ public class HomeController {
 	public String home() {
 		LOGGER.info("In HomeController.home()");
 		return "<h2>Banking REST API</h2><hr/>" +
-                "<ul>" +
-                    "<li><a href='./banking_srs.txt'> Requirements Document </a></li>" +
-                "</ul>";
+				"<ul>" +
+				"<li><a href='./banking_srs.txt'> Requirements Document </a></li>" +
+				"</ul>";
 	}
-
 }

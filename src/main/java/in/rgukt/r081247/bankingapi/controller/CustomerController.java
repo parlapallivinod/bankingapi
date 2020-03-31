@@ -1,13 +1,12 @@
 /**
  * @author Vinod Parlapalli
  * Created on 2019/10/14
- * A banker can create any number of banks.
+ *
  */
 package in.rgukt.r081247.bankingapi.controller;
 
 import in.rgukt.r081247.bankingapi.model.Role;
 import in.rgukt.r081247.bankingapi.model.User;
-import in.rgukt.r081247.bankingapi.repository.UserRepository;
 import in.rgukt.r081247.bankingapi.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,11 +17,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @RestController

@@ -2,6 +2,7 @@
  * @author Vinod Parlapalli
  * created on 2019/11/03
  *
+ * Exceptions are converted into this class object and sent to user as Response.
  */
 
 package in.rgukt.r081247.bankingapi.exception;

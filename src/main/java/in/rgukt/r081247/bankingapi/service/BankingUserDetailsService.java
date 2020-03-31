@@ -31,7 +31,7 @@ public class BankingUserDetailsService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         LOGGER.info("username: '" + username + "'");
         Optional<User> user = userRepository.findById(username);
-        if (! user.isPresent()) {
+        if (!user.isPresent()) {
             LOGGER.info("User with '" + username + "' username not present in the system.");
             throw new UsernameNotFoundException("User with '" + username + "' username not present in the system.");
         }

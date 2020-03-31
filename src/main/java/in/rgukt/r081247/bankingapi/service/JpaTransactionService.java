@@ -58,6 +58,11 @@ public class JpaTransactionService implements TransactionService {
             toUser = optionalToUser.get();
         }
         LOGGER.info("toUser: " + toUser);
+        if (transaction.getType() == TransactionType.DEPOSIT
+                && transaction.getToUser().getUsername() != null && toUser == null){
+            throw new RuntimeException("toUser must be a valid customer for a DEPOSIT transaction" +
+                    " or Don't provide any toUser to make yourself as toUser");
+        }
         if (transaction.getType() == TransactionType.TRANSFER && toUser == null) {
             throw new RuntimeException("toUser must be a valid customer for a TRANSFER transaction");
         }

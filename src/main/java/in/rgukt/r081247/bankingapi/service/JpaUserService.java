@@ -30,14 +30,13 @@ public class JpaUserService implements UserService {
     private UserRepository userRepository;
 
     public User registerUser(User user) {
-
-        LOGGER.info("User: " + user);
+        LOGGER.debug("User: " + user);
         Optional<User> banker = userRepository.findById(user.getUsername());
         if (banker.isPresent()) {
             throw new UserFoundException("A user with '" + user.getUsername() + "' username already present in the system. Kindly try with a different username.");
         }
         user = userRepository.save(user);
-        LOGGER.info("User has been registered");
+        LOGGER.info("User: " + user + " has been registered");
         return user;
     }
 

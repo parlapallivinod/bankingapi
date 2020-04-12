@@ -30,7 +30,7 @@ public class JpaUserService implements UserService {
     private UserRepository userRepository;
 
     public User registerUser(User user) {
-        LOGGER.debug("User: " + user);
+        LOGGER.info("User: " + user);
         Optional<User> banker = userRepository.findById(user.getUsername());
         if (banker.isPresent()) {
             throw new UserFoundException("A user with '" + user.getUsername() + "' username already present in the system. Kindly try with a different username.");
@@ -82,6 +82,7 @@ public class JpaUserService implements UserService {
         }
         User user = optionalUser.get();
         userRepository.delete(user);
+        LOGGER.info("User: " + user + " deleted");
         return user;
     }
 

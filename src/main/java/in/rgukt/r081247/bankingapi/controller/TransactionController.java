@@ -1,3 +1,8 @@
+/**
+ * @author Vinod Parlapalli
+ * @since 2019-XX-XX
+ */
+
 package in.rgukt.r081247.bankingapi.controller;
 
 import in.rgukt.r081247.bankingapi.model.Transaction;
@@ -27,18 +32,23 @@ import java.util.Optional;
 public class TransactionController {
 	private static final Logger LOGGER = LoggerFactory.getLogger(TransactionController.class);
 
+	/*
 	@Autowired
 	private UserRepository userRepository;
+	 */
 
 	@Autowired
 	private TransactionService transactionService;
 
+
+	/*
 	@GetMapping(value="", produces = MediaType.TEXT_HTML_VALUE)
 	public String home() {
 		LOGGER.info("In TransactionController.home()");
 		return "<h2>Banking REST API</h2><hr/>" +
                 "TransactionController.home()";
 	}
+	*/
 
 	/*
 	@GetMapping(value = "/post", produces = MediaType.TEXT_HTML_VALUE)
@@ -109,6 +119,11 @@ public class TransactionController {
 	}
 	*/
 
+	/**
+	 * Transaction is created and returned after successful validation.
+ 	 * @param transaction: transaction object
+	 * @return: transaction object
+	 */
 	@PostMapping(value = "", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Object> performTransaction(@Valid @RequestBody Transaction transaction) {
 		LOGGER.info("Transaction: " + transaction);
@@ -116,6 +131,13 @@ public class TransactionController {
 		return new ResponseEntity<>(performedTransaction, HttpStatus.CREATED);
 	}
 
+	/**
+	 * Logged in user's transactions, which are ordered descending by id,
+	 * from passed in page number and page size, are returned.
+	 * @param pageNumber: page number
+	 * @param pageSize: page size
+	 * @return: transactions
+	 */
 	@GetMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Object> getTransactions(@RequestParam(defaultValue = "0") Integer pageNumber,
                                   @RequestParam(defaultValue = "10") Integer pageSize) {

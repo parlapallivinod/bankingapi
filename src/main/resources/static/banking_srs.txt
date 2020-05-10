@@ -67,7 +67,7 @@ CREATE TABLE user
 	password VARCHAR(128) NOT NULL,
 	balance BIGINT DEFAULT 0 NOT NULL,
 	created_time TIMESTAMP NOT NULL,
-	last_updated_time TIMESTAMP,
+	last_updated_time TIMESTAMP NULL,
 
 	CONSTRAINT pk_user PRIMARY KEY(username)
 );

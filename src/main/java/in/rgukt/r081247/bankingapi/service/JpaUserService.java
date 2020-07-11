@@ -24,7 +24,7 @@ import java.util.Optional;
 @Service
 @Transactional
 public class JpaUserService implements UserService {
-    private static final Logger LOGGER = LoggerFactory.getLogger(UserService.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(JpaUserService.class);
 
     @Autowired
     private UserRepository userRepository;
@@ -61,7 +61,7 @@ public class JpaUserService implements UserService {
         LOGGER.info("Username: " + username);
         Optional<User> optionalUserFromRepository = userRepository.findById(username);
         if (! optionalUserFromRepository.isPresent()) {
-            throw new UserFoundException("User with '" + username + "' username not found in the system.");
+            throw new UserNotFoundException("User with '" + username + "' username not found in the system.");
         }
         User userFromRepository = optionalUserFromRepository.get();
         LOGGER.info("User from repository: " + userFromRepository);

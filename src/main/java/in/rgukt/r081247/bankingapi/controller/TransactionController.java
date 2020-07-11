@@ -29,6 +29,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/v1/customers/transactions")
+@CrossOrigin
 public class TransactionController {
 	private static final Logger LOGGER = LoggerFactory.getLogger(TransactionController.class);
 

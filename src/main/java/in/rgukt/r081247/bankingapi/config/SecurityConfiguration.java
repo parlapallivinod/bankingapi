@@ -84,6 +84,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .httpBasic();
     	 */
         httpSecurity.csrf().disable();
+        //httpSecurity.cors().disable();
     }
 
     @Bean

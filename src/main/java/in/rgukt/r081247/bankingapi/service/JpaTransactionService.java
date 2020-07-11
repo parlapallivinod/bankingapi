@@ -6,6 +6,7 @@
 
 package in.rgukt.r081247.bankingapi.service;
 
+import in.rgukt.r081247.bankingapi.exception.TransactionException;
 import in.rgukt.r081247.bankingapi.model.Transaction;
 import in.rgukt.r081247.bankingapi.model.User;
 import in.rgukt.r081247.bankingapi.model.type.TransactionStatus;
@@ -62,11 +63,11 @@ public class JpaTransactionService implements TransactionService {
                 && transaction.getToUser() != null
                 && transaction.getToUser().getUsername() != null
                 && toUser == null){
-            throw new RuntimeException("toUser must be a valid customer for a DEPOSIT transaction" +
+            throw new TransactionException("toUser must be a valid customer for a DEPOSIT transaction" +
                     " or Don't provide any toUser to make yourself as toUser");
         }
         if (transaction.getType() == TransactionType.TRANSFER && toUser == null) {
-            throw new RuntimeException("toUser must be a valid customer for a TRANSFER transaction");
+            throw new TransactionException("toUser must be a valid customer for a TRANSFER transaction");
         }
 
         switch (transaction.getType()) {

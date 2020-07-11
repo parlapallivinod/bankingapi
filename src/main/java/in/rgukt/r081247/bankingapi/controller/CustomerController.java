@@ -22,6 +22,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/v1/customers")
 public class CustomerController {
 	private static final Logger LOGGER = LoggerFactory.getLogger(CustomerController.class);

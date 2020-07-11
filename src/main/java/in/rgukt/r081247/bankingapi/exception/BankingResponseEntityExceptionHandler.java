@@ -6,6 +6,7 @@
 
 package in.rgukt.r081247.bankingapi.exception;
 
+import in.rgukt.r081247.bankingapi.model.Transaction;
 import in.rgukt.r081247.bankingapi.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -51,6 +52,15 @@ public class BankingResponseEntityExceptionHandler extends ResponseEntityExcepti
         List<String> details = new ArrayList<>();
         details.add(ex.getLocalizedMessage());
         ErrorResponse error = new ErrorResponse("User Deletion Error", details);
+        LOGGER.error(error.toString());
+        return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(TransactionException.class)
+    public final ResponseEntity<Object> handleTransactionException(TransactionException ex, WebRequest request) {
+        List<String> details = new ArrayList<>();
+        details.add(ex.getLocalizedMessage());
+        ErrorResponse error = new ErrorResponse("Transaction Error", details);
         LOGGER.error(error.toString());
         return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
     }

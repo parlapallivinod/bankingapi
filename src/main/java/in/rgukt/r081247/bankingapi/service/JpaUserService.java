@@ -6,8 +6,7 @@
 
 package in.rgukt.r081247.bankingapi.service;
 
-import in.rgukt.r081247.bankingapi.exception.UserNotFoundException;
-import in.rgukt.r081247.bankingapi.exception.UserFoundException;
+import in.rgukt.r081247.bankingapi.exception.BankingException;
 import in.rgukt.r081247.bankingapi.model.User;
 import in.rgukt.r081247.bankingapi.repository.UserRepository;;
 import in.rgukt.r081247.bankingapi.util.UserUtils;
@@ -33,7 +32,7 @@ public class JpaUserService implements UserService {
         LOGGER.info("User: " + user);
         Optional<User> banker = userRepository.findById(user.getUsername());
         if (banker.isPresent()) {
-            throw new UserFoundException("A user with '" + user.getUsername() + "' username already present in the system. Kindly try with a different username.");
+            throw new BankingException("A user with '" + user.getUsername() + "' username already present in the system. Kindly try with a different username.");
         }
         user = userRepository.save(user);
         LOGGER.info("User: " + user + " has been registered");
@@ -47,7 +46,7 @@ public class JpaUserService implements UserService {
         LOGGER.info("Username: " + username);
         Optional<User> optionalUser = userRepository.findById(username);
         if (! optionalUser.isPresent()) {
-            throw new UserNotFoundException("User with '" + username + "' username not found in the system.");
+            throw new BankingException("User with '" + username + "' username not found in the system.");
         }
         User user = optionalUser.get();
         LOGGER.info("User: " + user);
@@ -61,7 +60,7 @@ public class JpaUserService implements UserService {
         LOGGER.info("Username: " + username);
         Optional<User> optionalUserFromRepository = userRepository.findById(username);
         if (! optionalUserFromRepository.isPresent()) {
-            throw new UserNotFoundException("User with '" + username + "' username not found in the system.");
+            throw new BankingException("User with '" + username + "' username not found in the system.");
         }
         User userFromRepository = optionalUserFromRepository.get();
         LOGGER.info("User from repository: " + userFromRepository);
@@ -78,9 +77,12 @@ public class JpaUserService implements UserService {
         LOGGER.info("Username: " + username);
         Optional<User> optionalUser = userRepository.findById(username);
         if (! optionalUser.isPresent()) {
-            throw new UserNotFoundException("User with '" + username + "' username not found in the system.");
+            throw new BankingException("User with '" + username + "' username not found in the system.");
         }
         User user = optionalUser.get();
+        if (user.getBalance() != 0) {
+            throw new BankingException("User, with non zero balance, cannot be deleted.");
+        }
         userRepository.delete(user);
         LOGGER.info("User: " + user + " deleted");
         return user;

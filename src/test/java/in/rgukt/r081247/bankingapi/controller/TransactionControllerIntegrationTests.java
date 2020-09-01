@@ -6,6 +6,6 @@ import javax.transaction.Transactional;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @Transactional
-public class TransactionControllerTests {
+public class TransactionControllerIntegrationTests {
 
 }

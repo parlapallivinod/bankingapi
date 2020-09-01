@@ -9,6 +9,7 @@ package in.rgukt.r081247.bankingapi.config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -59,11 +60,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     	 */
 
         httpSecurity.authorizeRequests()
+                .antMatchers(HttpMethod.OPTIONS, "/**").permitAll() // Including this to allow CORS preflight requests https://javascript.info/fetch-crossorigin
                 .antMatchers("/v1").permitAll()
-                //.antMatchers("/v1/bankers/registration").permitAll()
                 .antMatchers("/v1/customers/registration").permitAll()
                 .antMatchers("/v1/customers/**").authenticated()
-                //.antMatchers("/v1/bankers/**").authenticated()
                 .antMatchers("/**").permitAll()
                 .and()
                 .httpBasic();
@@ -84,7 +84,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .httpBasic();
     	 */
         httpSecurity.csrf().disable();
-        //httpSecurity.cors().disable();
     }
 
     @Bean

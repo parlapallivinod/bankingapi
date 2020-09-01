@@ -95,12 +95,14 @@ CREATE TABLE transaction
 	
 	CONSTRAINT pk_transaction PRIMARY KEY(id),
 	CONSTRAINT ck_transaction__type CHECK(type in ("DEPOSIT", "WITHDRAW", "TRANSFER")),
-	CONSTRAINT fk_transaction__user__from_user FOREIGN KEY(from_user) REFERENCES user(username) ON,
-	CONSTRAINT fk_transaction__user__to_user FOREIGN KEY(to_user) REFERENCES user(username),
+	CONSTRAINT fk_transaction__user__from_user FOREIGN KEY(from_user) REFERENCES user(username) ON DELETE SET NULL,
+	CONSTRAINT fk_transaction__user__to_user FOREIGN KEY(to_user) REFERENCES user(username) ON DELETE SET NULL,
 	CONSTRAINT ck_transaction__status CHECK(status in ("SUCCESS", "FAILURE"))
 );
 
 alter table banking.transaction AUTO_INCREMENT=1000000000;
+
+
 
 Customer Operations
 -------------------

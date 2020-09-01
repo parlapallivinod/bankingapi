@@ -13,7 +13,6 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 
 import javax.transaction.Transactional;
-
 import java.nio.charset.Charset;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -21,7 +20,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @Transactional
-public class CustomerControllerTests {
+public class CustomerControllerIntegrationTests {
     @LocalServerPort
     private int PORT;
 
@@ -66,7 +65,7 @@ public class CustomerControllerTests {
         System.out.println("Response Body: " + response.getBody());
 
         assertThat(response.getStatusCodeValue()).isEqualTo(400);
-        assertThat(response.getBody().getMessage()).isEqualTo("User Registration Error");
+        assertThat(response.getBody().getMessage()).isEqualTo("Banking Error");
         //assertThat(response.getBody().getPassword()).isEqualTo(password);
     }
 
@@ -134,6 +133,7 @@ public class CustomerControllerTests {
     }
 
     @Test
+
     public void testGetCustomerExistingUser() {
         String url = "http://localhost:" + PORT + "/v1/customers";
         System.out.println("URL: " + url);
@@ -215,5 +215,71 @@ public class CustomerControllerTests {
             System.out.println("Response Body: " + response.getBody());
         });
         System.out.println("Exception: " + exception);
+    }
+
+    @Test
+    public void testDeleteUserWithNonZeroBalance() {
+        String url = "http://localhost:" + PORT + "/v1/customers";
+        System.out.println("URL: " + url);
+        String username = "user02";
+        String password = "password02";
+        HttpHeaders headers = new HttpHeaders();
+        headers.setBasicAuth(username, password);
+
+        User user = new User();
+        user.setUsername(username);
+        user.setPassword(password);
+        HttpEntity<User> entity = new HttpEntity<>(null, headers);
+        ResponseEntity<ErrorResponse> response = template.exchange(url, HttpMethod.DELETE, entity, ErrorResponse.class);
+        System.out.println("Headers: " + headers);
+        System.out.println("Response Status: " + response.getStatusCodeValue());
+        System.out.println("Response Body: " + response.getBody());
+
+        assertThat(response.getStatusCodeValue()).isEqualTo(400);
+        assertThat(response.getBody().getMessage()).isEqualTo("Banking Error");
+    }
+
+    @Test
+    public void testDeleteUserNonExistingUser() {
+        String url = "http://localhost:" + PORT + "/v1/customers";
+        System.out.println("URL: " + url);
+        String username = "user02";
+        String password = "password00000000";
+        HttpHeaders headers = new HttpHeaders();
+        headers.setBasicAuth(username, password);
+
+        User user = new User();
+        user.setUsername(username);
+        user.setPassword(password);
+        HttpEntity<User> entity = new HttpEntity<>(null, headers);
+        ResponseEntity<Object> response = template.exchange(url, HttpMethod.DELETE, entity, Object.class);
+        System.out.println("Headers: " + headers);
+        System.out.println("Response Status: " + response.getStatusCodeValue());
+        System.out.println("Response Body: " + response.getBody());
+
+        //assertThat(response.getStatusCodeValue()).isEqualTo(400);
+        //assertThat(response.getBody().getMessage()).isEqualTo("Banking Error");
+    }
+
+    @Test
+    public void testDeleteUserWithZeroBalance() {
+        String url = "http://localhost:" + PORT + "/v1/customers";
+        System.out.println("URL: " + url);
+        String username = "user05";
+        String password = "password05";
+        HttpHeaders headers = new HttpHeaders();
+        headers.setBasicAuth(username, password);
+
+        User user = new User();
+        user.setUsername(username);
+        user.setPassword(password);
+        HttpEntity<User> entity = new HttpEntity<>(null, headers);
+        ResponseEntity<Object> response = template.exchange(url, HttpMethod.DELETE, entity, Object.class);
+        System.out.println("Headers: " + headers);
+        System.out.println("Response Status: " + response.getStatusCodeValue());
+        System.out.println("Response Body: " + response.getBody());
+
+        assertThat(response.getStatusCodeValue()).isEqualTo(204);
+        //assertThat(response.getBody().getMessage()).isEqualTo("Banking Error");
     }
 }

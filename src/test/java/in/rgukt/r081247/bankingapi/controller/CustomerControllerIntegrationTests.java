@@ -31,14 +31,13 @@ public class CustomerControllerIntegrationTests {
     public void testRegisterCustomerNewUser() {
         String url = "http://localhost:" + PORT + "/v1/customers/registration";
         System.out.println("URL: " + url);
-        String username = "user04";
-        String password = "password04";
+        String username = "user02";
+        String password = "password02";
         HttpHeaders headers = new HttpHeaders();
         User user = new User();
         user.setUsername(username);
         user.setPassword(password);
         HttpEntity<User> entity = new HttpEntity<>(user, headers);
-        //ResponseEntity<String> response = template.getForEntity(url, String.class);
         ResponseEntity<User> response = template.exchange(url, HttpMethod.POST, entity, User.class);
         System.out.println("Response Status: " + response.getStatusCodeValue());
         System.out.println("Response Body: " + response.getBody());
@@ -59,14 +58,12 @@ public class CustomerControllerIntegrationTests {
         user.setUsername(username);
         user.setPassword(password);
         HttpEntity<User> entity = new HttpEntity<>(user, headers);
-        //ResponseEntity<String> response = template.getForEntity(url, String.class);
         ResponseEntity<ErrorResponse> response = template.exchange(url, HttpMethod.POST, entity, ErrorResponse.class);
         System.out.println("Response Status: " + response.getStatusCodeValue());
         System.out.println("Response Body: " + response.getBody());
 
         assertThat(response.getStatusCodeValue()).isEqualTo(400);
         assertThat(response.getBody().getMessage()).isEqualTo("Banking Error");
-        //assertThat(response.getBody().getPassword()).isEqualTo(password);
     }
 
     @Test
@@ -80,14 +77,12 @@ public class CustomerControllerIntegrationTests {
         user.setUsername(username);
         user.setPassword(password);
         HttpEntity<User> entity = new HttpEntity<>(user, headers);
-        //ResponseEntity<String> response = template.getForEntity(url, String.class);
         ResponseEntity<ErrorResponse> response = template.exchange(url, HttpMethod.POST, entity, ErrorResponse.class);
         System.out.println("Response Status: " + response.getStatusCodeValue());
         System.out.println("Response Body: " + response.getBody());
 
         assertThat(response.getStatusCodeValue()).isEqualTo(400);
         assertThat(response.getBody().getMessage()).isEqualTo("Request Parameters Validation Error");
-        //assertThat(response.getBody().getPassword()).isEqualTo(password);
     }
 
     @Test
@@ -101,14 +96,12 @@ public class CustomerControllerIntegrationTests {
         user.setUsername(username);
         user.setPassword(password);
         HttpEntity<User> entity = new HttpEntity<>(user, headers);
-        //ResponseEntity<String> response = template.getForEntity(url, String.class);
         ResponseEntity<ErrorResponse> response = template.exchange(url, HttpMethod.POST, entity, ErrorResponse.class);
         System.out.println("Response Status: " + response.getStatusCodeValue());
         System.out.println("Response Body: " + response.getBody());
 
         assertThat(response.getStatusCodeValue()).isEqualTo(400);
         assertThat(response.getBody().getMessage()).isEqualTo("Request Parameters Validation Error");
-        //assertThat(response.getBody().getPassword()).isEqualTo(password);
     }
 
     @Test
@@ -122,23 +115,20 @@ public class CustomerControllerIntegrationTests {
         user.setUsername(username);
         user.setPassword(password);
         HttpEntity<User> entity = new HttpEntity<>(user, headers);
-        //ResponseEntity<String> response = template.getForEntity(url, String.class);
         ResponseEntity<ErrorResponse> response = template.exchange(url, HttpMethod.POST, entity, ErrorResponse.class);
         System.out.println("Response Status: " + response.getStatusCodeValue());
         System.out.println("Response Body: " + response.getBody());
 
         assertThat(response.getStatusCodeValue()).isEqualTo(400);
         assertThat(response.getBody().getMessage()).isEqualTo("Request Parameters Validation Error");
-        //assertThat(response.getBody().getPassword()).isEqualTo(password);
     }
 
     @Test
-
     public void testGetCustomerExistingUser() {
         String url = "http://localhost:" + PORT + "/v1/customers";
         System.out.println("URL: " + url);
-        String username = "user01";
-        String password = "password01";
+        String username = "user03";
+        String password = "password03";
         HttpHeaders headers = new HttpHeaders();
         headers.setBasicAuth(username, password);
 
@@ -157,8 +147,8 @@ public class CustomerControllerIntegrationTests {
     public void testGetCustomerNonExistingUser() {
         String url = "http://localhost:" + PORT + "/v1/customers";
         System.out.println("URL: " + url);
-        String username = "user11";
-        String password = "password11";
+        String username = "user04";
+        String password = "password04";
         HttpHeaders headers = new HttpHeaders();
         headers.setBasicAuth(username, password);
 
@@ -175,8 +165,8 @@ public class CustomerControllerIntegrationTests {
     public void testUpdateUserPasswordExistingUser() {
         String url = "http://localhost:" + PORT + "/v1/customers";
         System.out.println("URL: " + url);
-        String username = "user01";
-        String password = "password01";
+        String username = "user05";
+        String password = "password05";
         HttpHeaders headers = new HttpHeaders();
         headers.setBasicAuth(username, password);
 
@@ -198,8 +188,8 @@ public class CustomerControllerIntegrationTests {
     public void testUpdateUserPasswordNonExistingUser() {
         String url = "http://localhost:" + PORT + "/v1/customers";
         System.out.println("URL: " + url);
-        String username = "user11";
-        String password = "password11";
+        String username = "user06";
+        String password = "password06";
         HttpHeaders headers = new HttpHeaders();
         headers.setBasicAuth(username, password);
 
@@ -221,8 +211,8 @@ public class CustomerControllerIntegrationTests {
     public void testDeleteUserWithNonZeroBalance() {
         String url = "http://localhost:" + PORT + "/v1/customers";
         System.out.println("URL: " + url);
-        String username = "user02";
-        String password = "password02";
+        String username = "user07";
+        String password = "password07";
         HttpHeaders headers = new HttpHeaders();
         headers.setBasicAuth(username, password);
 
@@ -243,8 +233,8 @@ public class CustomerControllerIntegrationTests {
     public void testDeleteUserNonExistingUser() {
         String url = "http://localhost:" + PORT + "/v1/customers";
         System.out.println("URL: " + url);
-        String username = "user02";
-        String password = "password00000000";
+        String username = "user08";
+        String password = "password08";
         HttpHeaders headers = new HttpHeaders();
         headers.setBasicAuth(username, password);
 
@@ -257,7 +247,7 @@ public class CustomerControllerIntegrationTests {
         System.out.println("Response Status: " + response.getStatusCodeValue());
         System.out.println("Response Body: " + response.getBody());
 
-        //assertThat(response.getStatusCodeValue()).isEqualTo(400);
+        assertThat(response.getStatusCodeValue()).isEqualTo(401);
         //assertThat(response.getBody().getMessage()).isEqualTo("Banking Error");
     }
 
@@ -265,8 +255,8 @@ public class CustomerControllerIntegrationTests {
     public void testDeleteUserWithZeroBalance() {
         String url = "http://localhost:" + PORT + "/v1/customers";
         System.out.println("URL: " + url);
-        String username = "user05";
-        String password = "password05";
+        String username = "user09";
+        String password = "password09";
         HttpHeaders headers = new HttpHeaders();
         headers.setBasicAuth(username, password);
 

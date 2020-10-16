@@ -39,11 +39,11 @@ public class BankingResponseEntityExceptionHandler extends ResponseEntityExcepti
     }
 
     @ExceptionHandler(BankingException.class)
-    public final ResponseEntity<Object> handleTransactionException(BankingException ex, WebRequest request) {
+    public final ResponseEntity<Object> handleBankingException(BankingException ex, WebRequest request) {
         List<String> details = new ArrayList<>();
         details.add(ex.getLocalizedMessage());
         ErrorResponse error = new ErrorResponse("Banking Error", details);
-        LOGGER.error(error.toString());
+        LOGGER.warn(error.toString());
         return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
     }
 
@@ -57,7 +57,7 @@ public class BankingResponseEntityExceptionHandler extends ResponseEntityExcepti
             details.add(error.getDefaultMessage());
         }
         ErrorResponse error = new ErrorResponse("Request Parameters Validation Error", details);
-        LOGGER.error(error.toString());
+        LOGGER.warn(error.toString());
         return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
     }
 }

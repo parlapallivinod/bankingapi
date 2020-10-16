@@ -14,7 +14,7 @@ Below roles are present in this system.
 ROLE_CUSTOMER
 -------------
 	Users with this role can
-        # browse account details, update their password and delete their account.
+        # register, browse account details, update their password and delete their account.
         # browse transactions history and perform transactions of type deposit, withdraw and transfer on their accounts.
 
 Tables
@@ -32,6 +32,7 @@ user
 	password
 	balance
 	created_time
+	last_updated_time
 
 user_role
 	username
@@ -109,13 +110,13 @@ Customer Operations
 
 	A customer can create an account to perform transactions.
 
-		POST https://localhost:8080/banking/api/v1/customers/register
+		POST https://localhost:8080/banking/api/v1/customers/registration
 			-- username
 			-- password
 	
 			Above operation is used to create a new customer with default balance 0.
 
-	    Get https://localhost:8080/banking/api/v1/customers
+	    GET https://localhost:8080/banking/api/v1/customers
 
     		Above operation is used to get a customer's details. This operation is also
     		used to verify whether login credentials are valid or not for the given customer username.

@@ -50,7 +50,29 @@ public class JpaTransactionService implements TransactionService {
         User user = userRepository.findById(username).get();
         LOGGER.info("user: " + user);
 
+        switch (transaction.getType()) {
+            case DEPOSIT:
+                if (transaction.getFromUser() != null) {
+                    transaction.setFromUser(null);
+                }
+                break;
+            case TRANSFER:
+                if (transaction.getFromUser() != null) {
+                    transaction.setFromUser(null);
+                }
+                break;
+            case WITHDRAW:
+                if (transaction.getFromUser() != null) {
+                    transaction.setFromUser(null);
+                }
+                if (transaction.getToUser() != null) {
+                    transaction.setToUser(null);
+                }
+                break;
+        }
+
         Optional<User> optionalToUser = Optional.empty();
+        LOGGER.info("transaction.getToUser(): " + transaction.getToUser());
         if (transaction.getToUser() != null)
             optionalToUser = userRepository.findById(transaction.getToUser().getUsername());
         User toUser = null;
@@ -58,6 +80,7 @@ public class JpaTransactionService implements TransactionService {
             toUser = optionalToUser.get();
         }
         LOGGER.info("toUser: " + toUser);
+
         if (transaction.getType() == TransactionType.DEPOSIT
                 && transaction.getToUser() != null
                 && transaction.getToUser().getUsername() != null
@@ -67,6 +90,9 @@ public class JpaTransactionService implements TransactionService {
         }
         if (transaction.getType() == TransactionType.TRANSFER && toUser == null) {
             throw new BankingException("toUser must be a valid customer for a TRANSFER transaction");
+        }
+        if (transaction.getType() == TransactionType.TRANSFER && user.getUsername().equals(toUser.getUsername())) {
+            throw new BankingException("toUser must be a different customer other than you for a TRANSFER transaction");
         }
 
         switch (transaction.getType()) {

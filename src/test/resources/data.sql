@@ -23,4 +23,10 @@ INSERT INTO user_role(username, rolename) VALUES('user07', 'ROLE_CUSTOMER');
 INSERT INTO user(username, password, balance, created_time) VALUES('user09', 'password09', 0, '2020-01-01 09:00:00');
 INSERT INTO user_role(username, rolename) VALUES('user09', 'ROLE_CUSTOMER');
 
+-- testing perform transaction
+-- user10 is used to test invalid user
+INSERT INTO user(username, password, balance, created_time) VALUES('user11', 'password11', 1000, '2020-01-01 09:00:00');
+INSERT INTO user_role(username, rolename) VALUES('user11', 'ROLE_CUSTOMER');
+INSERT INTO user(username, password, balance, created_time) VALUES('user12', 'password12', 1000, '2020-01-01 09:00:00');
+INSERT INTO user_role(username, rolename) VALUES('user12', 'ROLE_CUSTOMER');
 

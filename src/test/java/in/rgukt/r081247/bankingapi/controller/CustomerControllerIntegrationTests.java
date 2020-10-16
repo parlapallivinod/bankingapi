@@ -2,6 +2,7 @@ package in.rgukt.r081247.bankingapi.controller;
 
 import in.rgukt.r081247.bankingapi.exception.ErrorResponse;
 import in.rgukt.r081247.bankingapi.model.User;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

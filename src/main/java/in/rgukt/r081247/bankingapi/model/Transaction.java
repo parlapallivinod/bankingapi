@@ -29,7 +29,7 @@ public class Transaction implements Comparable<Transaction> {
     private TransactionType type;
 
     @NotNull(message = "amount should not be null.")
-    @Min(value = 0)
+    @Min(value = 1)
     @Column(name = "amount", nullable = false)
     private Long amount;
 

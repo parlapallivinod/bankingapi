@@ -30,3 +30,14 @@ INSERT INTO user_role(username, rolename) VALUES('user11', 'ROLE_CUSTOMER');
 INSERT INTO user(username, password, balance, created_time) VALUES('user12', 'password12', 1000, '2020-01-01 09:00:00');
 INSERT INTO user_role(username, rolename) VALUES('user12', 'ROLE_CUSTOMER');
 
+-- testing get transactions
+-- user13 is used to test invalid user
+INSERT INTO user(username, password, balance, created_time) VALUES('user14', 'password14', 1000, '2020-01-01 09:00:00');
+INSERT INTO user_role(username, rolename) VALUES('user14', 'ROLE_CUSTOMER');
+INSERT INTO user(username, password, balance, created_time) VALUES('user15', 'password15', 1000, '2020-01-01 09:00:00');
+INSERT INTO user_role(username, rolename) VALUES('user15', 'ROLE_CUSTOMER');
+INSERT INTO transaction(type, amount, from_user, to_user, created_time, status) VALUES('DEPOSIT', 100, null, 'user14', '2020-01-01 09:00:00', 'SUCCESS');
+INSERT INTO transaction(type, amount, from_user, to_user, created_time, status) VALUES('WITHDRAW', 100, 'user14', null, '2020-01-01 09:00:00', 'SUCCESS');
+INSERT INTO transaction(type, amount, from_user, to_user, created_time, status) VALUES('TRANSFER', 100, 'user14', 'user15', '2020-01-01 09:00:00', 'SUCCESS');
+
+

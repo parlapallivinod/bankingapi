@@ -206,6 +206,7 @@ public class CustomerControllerIntegrationTests {
             System.out.println("Response Body: " + response.getBody());
         });
         System.out.println("Exception: " + exception);
+        assertThat(exception).isNotNull();
     }
 
     @Test

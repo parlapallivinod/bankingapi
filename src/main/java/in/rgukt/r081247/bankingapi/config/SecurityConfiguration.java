@@ -61,7 +61,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
         httpSecurity.authorizeRequests()
                 .antMatchers(HttpMethod.OPTIONS, "/**").permitAll() // Including this to allow CORS preflight requests https://javascript.info/fetch-crossorigin
-                .antMatchers("/v1").permitAll()
                 .antMatchers("/v1/customers/registration").permitAll()
                 .antMatchers("/v1/customers/**").authenticated()
                 .antMatchers("/**").permitAll()

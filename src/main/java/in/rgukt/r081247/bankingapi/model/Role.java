@@ -17,7 +17,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "role")
-public class Role implements Comparable<Role>{
+public class Role implements Comparable<Role> {
 
     @Id
     @NotEmpty(message = "rolename must not be empty")

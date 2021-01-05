@@ -10,9 +10,172 @@ info:
     url: http://www.apache.org/licenses/LICENSE-2.0.html
   version: 1.0.0
 servers:
-  - url: http://localhost:8080/banking/api/v1
+  - url: http://localhost:8080/banking/api
     description: Local server
 paths:
+  /v1/customers/registration:
+    post:
+      tags:
+        - customer
+      summary: Register a new customer
+      operationId: registerCustomer
+      requestBody:
+        description: Customer object that need to be registered.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+        required: true
+      responses:
+        201:
+          description: Customer registered successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /v1/customers:
+    get:
+      tags:
+        - customer
+      summary: Get customer details related to basic authetication header sent.
+      description: Returns customer details related to basic authetication header sent.
+      operationId: getCustomer
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        400:
+          description: Invalid ID supplied
+          content: {}
+        404:
+          description: Pet not found
+          content: {}
+      security:
+        - basicAuth: []
+    put:
+      tags:
+        - pet
+      summary: Update an existing pet
+      operationId: updatePet
+      requestBody:
+        description: Pet object that needs to be added to the store
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Pet'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Pet'
+        required: true
+      responses:
+        400:
+          description: Invalid ID supplied
+          content: {}
+        404:
+          description: Pet not found
+          content: {}
+        405:
+          description: Validation exception
+          content: {}
+      security:
+        - basicAuth: []
+    delete:
+      tags:
+        - pet
+      summary: Deletes a pet
+      operationId: deletePet
+      parameters:
+        - name: api_key
+          in: header
+          schema:
+            type: string
+        - name: petId
+          in: path
+          description: Pet id to delete
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        400:
+          description: Invalid ID supplied
+          content: {}
+        404:
+          description: Pet not found
+          content: {}
+      security:
+        - basicAuth: []
+  /v1/customers/transactions:
+    get:
+      tags:
+        - pet
+      summary: Find pet by ID
+      description: Returns a single pet
+      operationId: getPetById
+      parameters:
+        - name: petId
+          in: path
+          description: ID of pet to return
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Pet'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pet'
+        400:
+          description: Invalid ID supplied
+          content: {}
+        404:
+          description: Pet not found
+          content: {}
+      security:
+        - basicAuth: []
+    post:
+      tags:
+        - pet
+      summary: Update an existing pet
+      operationId: updatePet
+      requestBody:
+        description: Pet object that needs to be added to the store
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Pet'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Pet'
+        required: true
+      responses:
+        400:
+          description: Invalid ID supplied
+          content: {}
+        404:
+          description: Pet not found
+          content: {}
+        405:
+          description: Validation exception
+          content: {}
+      security:
+        - basicAuth: []
+
+
   /pet:
     put:
       tags:
@@ -577,7 +740,42 @@ paths:
           content: {}
 components:
   schemas:
-
+    User:
+      type: object
+      required:
+        - username
+        - password
+      properties:
+        username:
+          type: string
+          minLength: 5
+          maxLength: 16
+        password:
+          type: string
+          minLength: 5
+          maxLength: 16
+        balance:
+          type: integer
+          format: int64
+          default: 0
+        createdTime:
+          type: string
+          format: date-time
+        lastUpdatedTime:
+          type: string
+          format: date-time
+    ErrorResponse:
+      type: object
+      required:
+        - message
+        - details
+      properties:
+        message:
+          type: string
+        details:
+          type: array
+          items:
+            type: string
     Order:
       type: object
       properties:
@@ -697,6 +895,9 @@ components:
         message:
           type: string
   securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
     petstore_auth:
       type: oauth2
       flows:
@@ -709,3 +910,4 @@ components:
       type: apiKey
       name: api_key
       in: header
+

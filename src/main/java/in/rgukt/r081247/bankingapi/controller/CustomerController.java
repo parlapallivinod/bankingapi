@@ -83,5 +83,4 @@ public class CustomerController {
 		User user = userService.deleteUser();
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
-
 }

@@ -162,12 +162,13 @@ public class JpaTransactionService implements TransactionService {
         Page<Transaction> page = transactionRepository.findByFromUserOrToUser(user, user, pageable);
         Map<String, Object> transactionsMap = new HashMap<>();
 
-        transactionsMap.put("transactions", page.getContent());
+
         transactionsMap.put("totalTransactions", page.getTotalElements());
+        transactionsMap.put("pageSize", page.getSize());
         transactionsMap.put("totalPages", page.getTotalPages());
         transactionsMap.put("pageNumber", page.getNumber());
-        transactionsMap.put("pageSize", page.getSize());
         transactionsMap.put("numberOfTransactions", page.getNumberOfElements());
+        transactionsMap.put("transactions", page.getContent());
         LOGGER.info("transactionsMap: " + transactionsMap);
         return transactionsMap;
     }

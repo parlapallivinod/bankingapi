@@ -28,25 +28,6 @@ public class BankingResponseEntityExceptionHandler extends ResponseEntityExcepti
 
     private static final Logger LOGGER = LoggerFactory.getLogger(UserService.class);
 
-    /** Generic exception handler */
-    @ExceptionHandler(Exception.class)
-    public final ResponseEntity<Object> handleAllExceptions(Exception ex, WebRequest request) {
-        List<String> details = new ArrayList<>();
-        details.add(ex.getLocalizedMessage());
-        ErrorResponse error = new ErrorResponse("Banking Error", details);
-        LOGGER.error(error.toString());
-        return new ResponseEntity<>(error, HttpStatus.INTERNAL_SERVER_ERROR);
-    }
-
-    @ExceptionHandler(BankingException.class)
-    public final ResponseEntity<Object> handleBankingException(BankingException ex, WebRequest request) {
-        List<String> details = new ArrayList<>();
-        details.add(ex.getLocalizedMessage());
-        ErrorResponse error = new ErrorResponse("Banking Error", details);
-        LOGGER.warn(error.toString());
-        return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
-    }
-
     @Override
     protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex,
                                                                   HttpHeaders headers,
@@ -59,5 +40,33 @@ public class BankingResponseEntityExceptionHandler extends ResponseEntityExcepti
         ErrorResponse error = new ErrorResponse("Request Parameters Validation Error", details);
         LOGGER.warn(error.toString());
         return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(IllegalArgumentException.class)
+    public final ResponseEntity<Object> handleIllegalArgumentException(IllegalArgumentException ex, WebRequest request) {
+        List<String> details = new ArrayList<>();
+        details.add(ex.getLocalizedMessage());
+        ErrorResponse error = new ErrorResponse("Banking Error", details);
+        LOGGER.error(error.toString());
+        return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(BankingException.class)
+    public final ResponseEntity<Object> handleBankingException(BankingException ex, WebRequest request) {
+        List<String> details = new ArrayList<>();
+        details.add(ex.getLocalizedMessage());
+        ErrorResponse error = new ErrorResponse("Banking Error", details);
+        LOGGER.warn(error.toString());
+        return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
+    }
+
+    /** Generic exception handler */
+    @ExceptionHandler(Exception.class)
+    public final ResponseEntity<Object> handleAllExceptions(Exception ex, WebRequest request) {
+        List<String> details = new ArrayList<>();
+        details.add(ex.getLocalizedMessage());
+        ErrorResponse error = new ErrorResponse("Banking Error", details);
+        LOGGER.error(error.toString());
+        return new ResponseEntity<>(error, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }

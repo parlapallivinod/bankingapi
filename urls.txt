@@ -1,0 +1,5 @@
+Connection Pooling and Multiple Data Sources
+https://springframework.guru/how-to-configure-multiple-data-sources-in-a-spring-boot-application/
+https://medium.com/programming-sharing/configuration-connection-pool-in-springboot-c561b5b90b99
+https://www.concretepage.com/spring-boot/spring-boot-hikaricp
+https://docs.spring.io/spring-boot/docs/current/reference/html/howto.html#howto-data-access

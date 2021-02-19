@@ -1,8 +1,10 @@
 package in.rgukt.r081247.bankingapi.controller;
 
-import org.springframework.stereotype.Controller;
+import in.rgukt.r081247.bankingapi.model.CustomHeader;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,4 +17,10 @@ public class HomeController {
     public void getSwaggerUI(HttpServletRequest request, HttpServletResponse response) throws Exception {
         response.sendRedirect("swagger-ui/");
     }
+
+    @GetMapping("/customHeaderValidation")
+    public ResponseEntity<Object> validateCustomHeader(@RequestHeader CustomHeader customHeader) {
+        return new ResponseEntity<>(customHeader, HttpStatus.OK);
+    }
+
 }

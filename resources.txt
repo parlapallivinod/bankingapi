@@ -9,3 +9,5 @@ Load or Performance Testing
 ---------------------------
 https://www.soapui.org/docs/load-testing/concept/
 https://octoperf.com/blog/2018/04/23/jmeter-rest-api-testing/
+https://www.loadview-testing.com/blog/5-jmeter-load-testing-examples/
+https://www.guru99.com/jmeter-performance-testing.html

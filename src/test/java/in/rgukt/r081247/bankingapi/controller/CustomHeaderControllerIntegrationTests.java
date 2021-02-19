@@ -21,7 +21,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @Transactional
-public class CustomerControllerIntegrationTests {
+public class CustomHeaderControllerIntegrationTests {
     @LocalServerPort
     private int PORT;
 

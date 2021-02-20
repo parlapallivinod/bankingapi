@@ -4,7 +4,7 @@
  *
  */
 
-package in.rgukt.r081247.bankingapi.model.type;
+package in.rgukt.r081247.bankingapi.model;
 
 public enum TransactionStatus {
     FAILURE("FAILURE"),

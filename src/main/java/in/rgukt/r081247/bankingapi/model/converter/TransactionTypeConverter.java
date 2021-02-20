@@ -1,4 +1,6 @@
-package in.rgukt.r081247.bankingapi.model.type;
+package in.rgukt.r081247.bankingapi.model.converter;
+
+import in.rgukt.r081247.bankingapi.model.TransactionType;
 
 import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;

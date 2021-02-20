@@ -5,10 +5,6 @@
 
 package in.rgukt.r081247.bankingapi.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import in.rgukt.r081247.bankingapi.model.type.TransactionStatus;
-import in.rgukt.r081247.bankingapi.model.type.TransactionType;
-
 import javax.persistence.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;

@@ -50,7 +50,7 @@ public class BankingResponseEntityExceptionHandler extends ResponseEntityExcepti
         LOGGER.warn(ex.getMessage());
         List<String> details = new ArrayList<>();
         details.add(ex.getCause().getCause().getMessage());
-        ErrorResponse error = new ErrorResponse("Banking Error", details);
+        ErrorResponse error = new ErrorResponse("Header Validation Error", details);
         LOGGER.warn(error.toString());
         return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
     }
@@ -59,7 +59,7 @@ public class BankingResponseEntityExceptionHandler extends ResponseEntityExcepti
     public final ResponseEntity<Object> handleMissingRequestHeaderException(MissingRequestHeaderException ex, WebRequest request) {
         List<String> details = new ArrayList<>();
         details.add(ex.getMessage());
-        ErrorResponse error = new ErrorResponse("Banking Error", details);
+        ErrorResponse error = new ErrorResponse("Missing Required Header", details);
         LOGGER.warn(error.toString());
         return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
     }
@@ -68,7 +68,7 @@ public class BankingResponseEntityExceptionHandler extends ResponseEntityExcepti
     public final ResponseEntity<Object> handleIllegalArgumentException(IllegalArgumentException ex, WebRequest request) {
         List<String> details = new ArrayList<>();
         details.add(ex.getLocalizedMessage());
-        ErrorResponse error = new ErrorResponse("Banking Error", details);
+        ErrorResponse error = new ErrorResponse("Request Parameters Validation Error", details);
         LOGGER.warn(error.toString());
         return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
     }

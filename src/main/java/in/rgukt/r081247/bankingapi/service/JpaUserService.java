@@ -87,6 +87,4 @@ public class JpaUserService implements UserService {
         LOGGER.info("User: " + user + " deleted");
         return user;
     }
-
-
 }

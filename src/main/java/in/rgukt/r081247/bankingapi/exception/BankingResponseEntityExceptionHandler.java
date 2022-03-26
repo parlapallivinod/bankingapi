@@ -28,7 +28,7 @@ import java.util.List;
 @RestControllerAdvice
 public class BankingResponseEntityExceptionHandler extends ResponseEntityExceptionHandler {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(UserService.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(BankingResponseEntityExceptionHandler.class);
 
 
     @Override

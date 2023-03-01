@@ -11,3 +11,13 @@ https://www.soapui.org/docs/load-testing/concept/
 https://octoperf.com/blog/2018/04/23/jmeter-rest-api-testing/
 https://www.loadview-testing.com/blog/5-jmeter-load-testing-examples/
 https://www.guru99.com/jmeter-performance-testing.html
+
+Caching in spring boot application
+----------------------------------
+
+Micro service design patterns
+resilience4j Java Library
+------------------------------------
+https://www.baeldung.com/resilience4j
+https://www.baeldung.com/spring-boot-resilience4j
+https://resilience4j.readme.io/docs

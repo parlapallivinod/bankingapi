@@ -15,6 +15,8 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import javax.sql.DataSource;
+
 @Configuration
 @EnableTransactionManagement
 @EnableJpaRepositories(basePackages = "in.rgukt.r081247.bankingapi.repository")
@@ -30,7 +32,7 @@ public class JpaConfiguration {
     @Bean
     @Primary
     @ConfigurationProperties("banking.datasource.hikari")
-    public HikariDataSource bankingDataSource() {
+    public DataSource bankingDataSource() {
         return bankingDataSourceProperties().initializeDataSourceBuilder().type(HikariDataSource.class).build();
     }
 
@@ -42,7 +44,7 @@ public class JpaConfiguration {
 
     @Bean
     @ConfigurationProperties("user.datasource.hikari")
-    public HikariDataSource userDataSource() {
+    public DataSource userDataSource() {
         return userDataSourceProperties().initializeDataSourceBuilder().type(HikariDataSource.class).build();
     }
 }

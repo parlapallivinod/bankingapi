@@ -46,8 +46,8 @@ paths:
     get:
       tags:
         - customers
-      summary: Get customer details related to basic authetication header sent.
-      description: Returns customer details related to basic authetication header sent.
+      summary: Get customer details related to basic authentication header sent.
+      description: Returns customer details related to basic authentication header sent.
       operationId: getCustomer
       responses:
         200:
@@ -67,7 +67,7 @@ paths:
     put:
       tags:
         - customers
-      summary: Update customer password related to basic authetication header sent.
+      summary: Update customer password related to basic authentication header sent.
       operationId: updateCustomerPassword
       requestBody:
         description: Customer object that needs it's password to be updated.
@@ -100,7 +100,7 @@ paths:
     delete:
       tags:
         - customers
-      summary: Delete customer related to basic authetication header sent.
+      summary: Delete customer related to basic authentication header sent.
       operationId: deleteCustomer
       responses:
         204:
@@ -125,7 +125,7 @@ paths:
       tags:
         - transactions
       summary: Get transactions
-      description: Get transactions related to to basic authetication header sent with pagination.
+      description: Get transactions related to to basic authentication header sent with pagination.
       operationId: getTransactions
       parameters:
         - name: pageNumber

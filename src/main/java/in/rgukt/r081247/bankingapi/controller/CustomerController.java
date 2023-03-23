@@ -42,10 +42,6 @@ public class CustomerController {
 		Set<Role> roles = new HashSet<>();
 		roles.add(role);
 
-		Set<User> users = new HashSet<>();
-		users.add(customer);
-
-		role.setUsers(users);
 		customer.setRoles(roles);
 		customer.setCreatedTime(LocalDateTime.now());
 

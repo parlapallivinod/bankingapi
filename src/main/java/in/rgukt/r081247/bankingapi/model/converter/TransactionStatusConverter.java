@@ -2,8 +2,8 @@ package in.rgukt.r081247.bankingapi.model.converter;
 
 import in.rgukt.r081247.bankingapi.model.TransactionStatus;
 
-import javax.persistence.AttributeConverter;
-import javax.persistence.Converter;
+import jakarta.persistence.AttributeConverter;
+import jakarta.persistence.Converter;
 import java.util.stream.Stream;
 
 @Converter(autoApply = true)

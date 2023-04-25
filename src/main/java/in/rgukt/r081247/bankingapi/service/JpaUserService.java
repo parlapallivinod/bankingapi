@@ -7,6 +7,7 @@
 package in.rgukt.r081247.bankingapi.service;
 
 import in.rgukt.r081247.bankingapi.exception.BankingException;
+import in.rgukt.r081247.bankingapi.model.Role;
 import in.rgukt.r081247.bankingapi.model.User;
 import in.rgukt.r081247.bankingapi.repository.UserRepository;;
 import in.rgukt.r081247.bankingapi.util.UserUtils;
@@ -18,7 +19,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
+import java.util.HashSet;
 import java.util.Optional;
+import java.util.Set;
 
 @Service
 @Transactional
@@ -29,6 +32,13 @@ public class JpaUserService implements UserService {
     private UserRepository userRepository;
 
     public User registerUser(User user) {
+        Role role = new Role();
+        role.setRolename("ROLE_CUSTOMER");
+        Set<Role> roles = new HashSet<>();
+        roles.add(role);
+
+        user.setRoles(roles);
+        user.setCreatedTime(LocalDateTime.now());
         LOGGER.info("User: " + user);
         Optional<User> banker = userRepository.findById(user.getUsername());
         if (banker.isPresent()) {

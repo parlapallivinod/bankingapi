@@ -37,14 +37,6 @@ public class CustomerController {
 	 */
 	@PostMapping(value = "/registration", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Object> registerCustomer(@Valid @RequestBody User customer) {
-		Role role = new Role();
-		role.setRolename("ROLE_CUSTOMER");
-		Set<Role> roles = new HashSet<>();
-		roles.add(role);
-
-		customer.setRoles(roles);
-		customer.setCreatedTime(LocalDateTime.now());
-
 		customer = userService.registerUser(customer);
 		return new ResponseEntity<>(customer, HttpStatus.CREATED);
 	}

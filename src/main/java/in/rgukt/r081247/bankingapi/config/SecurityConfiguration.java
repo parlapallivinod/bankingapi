@@ -46,8 +46,8 @@ public class SecurityConfiguration {
     @Bean
     public SecurityFilterChain configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.sessionManagement(sessionManagement -> sessionManagement.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
-        httpSecurity.authorizeHttpRequests(authorizeRequests ->
-                authorizeRequests.requestMatchers(HttpMethod.OPTIONS, "/**").permitAll() // Including this to allow CORS preflight requests https://javascript.info/fetch-crossorigin
+        httpSecurity.authorizeHttpRequests(requests ->
+                        requests.requestMatchers(HttpMethod.OPTIONS, "/**").permitAll() // Including this to allow CORS preflight requests https://javascript.info/fetch-crossorigin
                                  .requestMatchers("/v1/customers/registration").permitAll()
                                  .requestMatchers("/v1/customers/**").authenticated()
                                  .requestMatchers("/**").permitAll())

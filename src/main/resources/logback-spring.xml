@@ -41,13 +41,13 @@
     </appender>
 
     <!-- LOG everything at DEBUG level to console-->
-    <root level="DEBUG">
+    <root level="INFO">
         <!-- <appender-ref ref="RollingFile" /> -->
         <appender-ref ref="Console" />
     </root>
 
     <!-- LOG "in.rgukt.r081247.bankingapi*" at INFO level to file -->
-    <logger name="in.rgukt.r081247.bankingapi" level="DEBUG">
+    <logger name="in.rgukt.r081247.bankingapi" level="INFO" additivity="false">
         <appender-ref ref="RollingFile" />
         <!-- <appender-ref ref="Console"/> -->
     </logger>

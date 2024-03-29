@@ -7,6 +7,7 @@ package in.rgukt.r081247.bankingapi.controller;
 
 import in.rgukt.r081247.bankingapi.model.Transaction;
 import in.rgukt.r081247.bankingapi.service.TransactionService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,7 @@ import java.util.Map;
 @RestController
 @RequestMapping("/v1/customers/transactions")
 @CrossOrigin
+@SecurityRequirement(name = "basicAuth")
 public class TransactionController {
 	private static final Logger LOGGER = LoggerFactory.getLogger(TransactionController.class);
 

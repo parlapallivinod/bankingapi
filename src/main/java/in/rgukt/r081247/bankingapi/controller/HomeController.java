@@ -13,11 +13,6 @@ import jakarta.servlet.http.HttpServletResponse;
 @RestController
 public class HomeController {
 
-    @GetMapping("")
-    public void getSwaggerUI(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        response.sendRedirect("swagger-ui/");
-    }
-
     @GetMapping("/customHeaderValidation")
     public ResponseEntity<Object> validateCustomHeader(@RequestHeader CustomHeader customHeader) {
         return new ResponseEntity<>(customHeader, HttpStatus.OK);

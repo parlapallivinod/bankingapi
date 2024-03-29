@@ -8,6 +8,7 @@ package in.rgukt.r081247.bankingapi.controller;
 import in.rgukt.r081247.bankingapi.model.Role;
 import in.rgukt.r081247.bankingapi.model.User;
 import in.rgukt.r081247.bankingapi.service.UserService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,6 +47,7 @@ public class CustomerController {
 	 * @return: customer object
 	 */
 	@GetMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE)
+	@SecurityRequirement(name = "basicAuth")
 	public ResponseEntity<Object> getCustomer() {
 		User customer = userService.getUser();
 		return new ResponseEntity<>(customer, HttpStatus.OK);
@@ -58,6 +60,7 @@ public class CustomerController {
 	 * @return: customer object
 	 */
 	@PutMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	@SecurityRequirement(name = "basicAuth")
 	public ResponseEntity<Object> updateCustomerPassword(@Valid @RequestBody User customer) {
 		customer = userService.updateUserPassword(customer);
 		return new ResponseEntity<>(customer, HttpStatus.OK);
@@ -67,6 +70,7 @@ public class CustomerController {
 	 * Logged in customer is deleted from the system after successful validation.
 	 */
 	@DeleteMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE)
+	@SecurityRequirement(name = "basicAuth")
 	public ResponseEntity<Object> deleteCustomer() {
 		User user = userService.deleteUser();
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);

@@ -22,6 +22,7 @@ public class Transaction implements Comparable<Transaction> {
 
     @NotNull(message = "type should not be null.")
     @Column(name = "type", nullable = false)
+    @Enumerated(EnumType.STRING)
     private TransactionType type;
 
     @NotNull(message = "amount should not be null.")
@@ -39,6 +40,7 @@ public class Transaction implements Comparable<Transaction> {
 
     //@NotNull(message = "status should not be null.")
     @Column(name = "status", nullable = false)
+    @Enumerated(EnumType.STRING)
     private TransactionStatus status;
 
     @Column(name = "message", length = 1024, nullable = true)

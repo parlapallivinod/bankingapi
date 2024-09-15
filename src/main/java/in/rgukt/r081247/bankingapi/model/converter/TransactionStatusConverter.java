@@ -1,3 +1,4 @@
+/*
 package in.rgukt.r081247.bankingapi.model.converter;
 
 import in.rgukt.r081247.bankingapi.model.TransactionStatus;
@@ -24,3 +25,4 @@ public class TransactionStatusConverter implements AttributeConverter<Transactio
                 .orElseThrow(IllegalArgumentException::new);
     }
 }
+*/

@@ -1,3 +1,4 @@
+/*
 package in.rgukt.r081247.bankingapi.model.converter;
 
 import in.rgukt.r081247.bankingapi.model.TransactionType;
@@ -24,3 +25,4 @@ public class TransactionTypeConverter implements AttributeConverter<TransactionT
                 .orElseThrow(IllegalArgumentException::new);
     }
 }
+*/

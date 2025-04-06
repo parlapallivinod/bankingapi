@@ -9,7 +9,7 @@ package in.rgukt.r081247.bankingapi.service;
 import in.rgukt.r081247.bankingapi.exception.BankingException;
 import in.rgukt.r081247.bankingapi.model.Role;
 import in.rgukt.r081247.bankingapi.model.User;
-import in.rgukt.r081247.bankingapi.repository.UserRepository;;
+import in.rgukt.r081247.bankingapi.repository.UserRepository;
 import in.rgukt.r081247.bankingapi.util.UserUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

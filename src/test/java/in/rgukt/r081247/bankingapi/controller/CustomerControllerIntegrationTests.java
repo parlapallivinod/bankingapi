@@ -199,14 +199,19 @@ public class CustomerControllerIntegrationTests {
         user.setPassword(password + "new");
         HttpEntity<User> entity = new HttpEntity<>(user, headers);
 
+        /*
         Exception exception = assertThrows(Exception.class, () -> {
             ResponseEntity<Object> response = template.exchange(url, HttpMethod.PUT, entity, Object.class);
             System.out.println("Headers: " + headers);
             System.out.println("Response Status: " + response.getStatusCodeValue());
             System.out.println("Response Body: " + response.getBody());
         });
-        System.out.println("Exception: " + exception);
-        assertThat(exception).isNotNull();
+         */
+        ResponseEntity<Object> response = template.exchange(url, HttpMethod.PUT, entity, Object.class);
+        System.out.println("Headers: " + headers);
+        System.out.println("Response Status: " + response.getStatusCodeValue());
+        System.out.println("Response Body: " + response.getBody());
+        assertThat(response.getStatusCodeValue()).isEqualTo(401);
     }
 
     @Test
@@ -253,14 +258,19 @@ public class CustomerControllerIntegrationTests {
         assertThat(response.getStatusCodeValue()).isEqualTo(401);
         //assertThat(response.getBody().getMessage()).isEqualTo("Banking Error");
          */
+        /*
         Exception exception = assertThrows(Exception.class, () -> {
             ResponseEntity<Object> response = template.exchange(url, HttpMethod.DELETE, entity, Object.class);
             System.out.println("Headers: " + headers);
             System.out.println("Response Status: " + response.getStatusCodeValue());
             System.out.println("Response Body: " + response.getBody());
         });
-        System.out.println("Exception: " + exception);
-        assertThat(exception).isNotNull();
+         */
+        ResponseEntity<Object> response = template.exchange(url, HttpMethod.DELETE, entity, Object.class);
+        System.out.println("Headers: " + headers);
+        System.out.println("Response Status: " + response.getStatusCodeValue());
+        System.out.println("Response Body: " + response.getBody());
+        assertThat(response.getStatusCodeValue()).isEqualTo(401);
     }
 
     @Test

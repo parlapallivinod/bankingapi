@@ -24,7 +24,6 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/v1/customers/transactions")
-@CrossOrigin
 @SecurityRequirement(name = "basicAuth")
 public class TransactionController {
 	private static final Logger LOGGER = LoggerFactory.getLogger(TransactionController.class);

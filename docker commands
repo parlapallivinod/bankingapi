@@ -1,3 +1,6 @@
 sudo docker build -t parlapallivinod/parlapallivinod:latest .
 sudo docker run -p 8081:8080 parlapallivinod/parlapallivinod:latest
 sudo docker push parlapallivinod/parlapallivinod:latest
+
+https://banking-react-ui.vercel.app/
+https://parlapallivinod.github.io/banking_bootstrap_ui/
